@@ -47,24 +47,26 @@
         "test:types": "tsc --noEmit"
     },
     "dependencies": {
-        "@augment-vir/common": "13.2.2",
-        "@augment-vir/node-js": "13.2.2",
-        "dependency-cruiser": "^12.11.1"
+        "@augment-vir/common": "13.4.0",
+        "@augment-vir/node-js": "13.4.0",
+        "dependency-cruiser": "^13.0.0"
     },
     "devDependencies": {
-        "@augment-vir/chai": "13.2.2",
+        "@augment-vir/chai": "13.4.0",
         "@electrovir/nyc": "^15.1.0-fix0",
         "@istanbuljs/nyc-config-typescript": "^1.0.2",
-        "@types/chai": "^4.3.4",
+        "@types/chai": "^4.3.5",
         "@types/mocha": "^10.0.1",
-        "@types/node": "^18.15.11",
+        "@types/node": "^20.1.4",
         "chai": "^4.3.7",
         "cspell": "^6.31.1",
+        "esbuild": "^0.17.19",
         "istanbul-smart-text-reporter": "^1.1.1",
         "markdown-code-example-inserter": "^0.3.0",
         "mocha": "^10.2.0",
         "mocha-spec-reporter-with-file-names": "^0.0.3",
-        "prettier": "^2.8.7",
+        "npm-check-updates": "^16.10.12",
+        "prettier": "^2.8.8",
         "prettier-plugin-interpolated-html-tags": "^0.0.3",
         "prettier-plugin-jsdoc": "^0.4.2",
         "prettier-plugin-multiline-arrays": "^1.1.3",
@@ -75,7 +77,7 @@
         "test-as-package": "^0.0.4",
         "test-established-expectations": "^0.3.0",
         "ts-node": "^10.9.1",
-        "typescript": "^5.0.3",
-        "virmator": "^6.3.2"
+        "typescript": "^5.0.4",
+        "virmator": "^6.5.1"
     }
 }
