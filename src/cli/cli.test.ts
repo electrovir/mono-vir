@@ -31,21 +31,21 @@ describe('cli', () => {
                 it: 'successfully runs for-each',
                 inputs: [
                     testRepos['augment-vir'],
-                    'for-each npm run --silent tsc-mono-test:success',
+                    'for-each npm run --silent mono-vir-test:success',
                 ],
             },
             {
                 it: 'errors if one of the scripts fails',
                 inputs: [
                     testRepos['augment-vir'],
-                    'for-each npm run --silent tsc-mono-test:one-failure',
+                    'for-each npm run --silent mono-vir-test:one-failure',
                 ],
             },
             {
                 it: 'errors if the given command is invalid',
                 inputs: [
                     testRepos['augment-vir'],
-                    'fake-command npm run --silent tsc-mono-test:success',
+                    'fake-command npm run --silent mono-vir-test:success',
                 ],
             },
             {

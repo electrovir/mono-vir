@@ -1,4 +1,4 @@
-# tsc-mono
+# moon-vir
 
 Super simple typescript mono-repo tooling.
 
@@ -20,7 +20,7 @@ This is likely not the fastest way to build a mono-repo. However, it is intended
 ## Installation
 
 ```bash
-npm i tsc-mono
+npm i moon-vir
 ```
 
 ## Usage
@@ -28,11 +28,11 @@ npm i tsc-mono
 It is recommended to first setup [npm workspaces](https://docs.npmjs.com/cli/using-npm/workspaces) (if you use npm) as you must use package name imports to import between each in-repo TS project.
 
 ```bash
-tsc-mono <command> <command-inputs>
+moon-vir <command> <command-inputs>
 ```
 
--   `<command>`: the `tsc-mono` command you wish to run.
--   `<command-inputs>`: inputs to the `tsc-mono` command in the bullet above. Currently there is only one command: `for-each`.
+-   `<command>`: the `moon-vir` command you wish to run.
+-   `<command-inputs>`: inputs to the `moon-vir` command in the bullet above. Currently there is only one command: `for-each`.
 
 ### `for-each`
 
@@ -42,27 +42,27 @@ Examples:
 
 -   run type checking for each TS project:
     ```bash
-    npx tsc-mono for-each tsc --noEmit
+    npx moon-vir for-each tsc --noEmit
     ```
 -   run "npm start" for each TS project:
     ```bash
-    npx tsc-mono for-each npm start
+    npx moon-vir for-each npm start
     ```
 
 ## Full Example
 
-To see an example repo setup that this package works for, go to this package's test files: https://github.com/electrovir/tsc-mono/tree/main/test-files/augment-vir
+To see an example repo setup that this package works for, go to this package's test files: https://github.com/electrovir/moon-vir/tree/main/test-files/augment-vir
 
 ## Help output
 
 Help message from the CLI:
 
 ```
-tsc-mono usage:
+moon-vir usage:
 
-tsc-mono <command> <command-inputs>
+moon-vir <command> <command-inputs>
 
-    - <command>: command that you want tsc-mono to run with this TS projects. Example: "for-each"
+    - <command>: command that you want moon-vir to run with this TS projects. Example: "for-each"
     - <command-inputs>: inputs for the given command. The options here will vary by command. Example: "npm run build"
 
 Commands:
@@ -72,7 +72,7 @@ for-each
     - projects are executed in dependency order
 
     Examples:
-        - tsc-mono for-each npm run build
-        - tsc-mono for-each "npm run build && echo success"
+        - moon-vir for-each npm run build
+        - moon-vir for-each "npm run build && echo success"
 
 ```

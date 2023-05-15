@@ -7,9 +7,9 @@
     "types": "dist/types/index.d.ts",
     "scripts": {
         "compile": "tsc --project tsconfig.json && tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json",
+        "mono-vir-test:success": "pwd",
         "test": "echo \"chai augments are already tested by the testing package\" && exit 0",
-        "test:coverage": "npm test",
-        "tsc-mono-test:success": "pwd"
+        "test:coverage": "npm test"
     },
     "dependencies": {
         "@augment-vir/common": "^13.2.1",

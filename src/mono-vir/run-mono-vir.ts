@@ -2,18 +2,18 @@ import {awaitedForEach} from '@augment-vir/common';
 import {log, runShellCommand} from '@augment-vir/node-js';
 import {join} from 'path';
 import {UserCommandFailedError} from '../cli/user-command-failed.error';
-import {tscMonoPackageName} from '../package-names';
+import {monoVirPackageName} from '../package-names';
 import {getProjectDependencyOrder} from './dependency-ordering/get-project-dependency-order';
-import {TscMonoCommandEnum} from './tsc-mono-commands';
-import {TscMonoInputs} from './tsc-mono-inputs';
+import {MonoVirCommandEnum} from './mono-vir-commands';
+import {MonoVirInputs} from './mono-vir-inputs';
 
-export async function runTscMono({command, commandInputs, cwd}: TscMonoInputs) {
-    if (command === TscMonoCommandEnum.ForEach) {
+export async function runMonoVir({command, commandInputs, cwd}: MonoVirInputs) {
+    if (command === MonoVirCommandEnum.ForEach) {
         const dependencyOrdering = await getProjectDependencyOrder(cwd);
 
         if (!dependencyOrdering.length) {
             throw new Error(
-                `${tscMonoPackageName} found no packages. Be sure that you are using the "workspaces" package.json field.`,
+                `${monoVirPackageName} found no packages. Be sure that you are using the "workspaces" package.json field.`,
             );
         }
 
@@ -36,6 +36,6 @@ export async function runTscMono({command, commandInputs, cwd}: TscMonoInputs) {
             }
         });
     } else {
-        throw new Error(`Command '${command}' is not yet implemented in '${tscMonoPackageName}'.`);
+        throw new Error(`Command '${command}' is not yet implemented in '${monoVirPackageName}'.`);
     }
 }

@@ -3,13 +3,13 @@
 import {extractErrorMessage} from '@augment-vir/common';
 import {log} from '@augment-vir/node-js';
 import {printHelpMessage} from '../help-message';
-import {runTscMono} from '../tsc-mono/run-tsc-mono';
+import {runMonoVir} from '../mono-vir/run-mono-vir';
 import {noHelpFlag, parseArgs} from './parse-cli-args';
 import {UserCommandFailedError} from './user-command-failed.error';
 
 async function cliMain() {
     const inputs = parseArgs(process.argv, __filename);
-    await runTscMono(inputs);
+    await runMonoVir(inputs);
 }
 
 cliMain().catch((error) => {

@@ -1,10 +1,10 @@
-import {tscMonoBinName, tscMonoPackageName} from './package-names';
+import {monoVirBinName, monoVirPackageName} from './package-names';
 const helpMessage = `
-${tscMonoPackageName} usage:
+${monoVirPackageName} usage:
 
-${tscMonoBinName} <command> <command-inputs>
+${monoVirBinName} <command> <command-inputs>
 
-    - <command>: command that you want tsc-mono to run with this TS projects. Example: "for-each"
+    - <command>: command that you want ${monoVirPackageName} to run with this TS projects. Example: "for-each"
     - <command-inputs>: inputs for the given command. The options here will vary by command. Example: "npm run build"
 
 Commands:
@@ -14,8 +14,8 @@ for-each
     - projects are executed in dependency order
     
     Examples:
-        - ${tscMonoBinName} for-each npm run build
-        - ${tscMonoBinName} for-each "npm run build && echo success"
+        - ${monoVirBinName} for-each npm run build
+        - ${monoVirBinName} for-each "npm run build && echo success"
 `;
 
 export function printHelpMessage() {

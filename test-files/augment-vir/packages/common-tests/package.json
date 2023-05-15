@@ -4,11 +4,11 @@
     "private": true,
     "scripts": {
         "compile": "tsc --pretty",
+        "mono-vir-test:one-failure": "pwd",
+        "mono-vir-test:success": "pwd",
         "test": " npm run test:types && virmator test",
         "test:coverage": "npm test coverage",
-        "test:types": "tsc --noEmit",
-        "tsc-mono-test:one-failure": "pwd",
-        "tsc-mono-test:success": "pwd"
+        "test:types": "tsc --noEmit"
     },
     "devDependencies": {
         "@augment-vir/chai": "^13.2.1",

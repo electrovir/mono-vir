@@ -6,10 +6,10 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "compile": "tsc --pretty",
+        "mono-vir-test:one-failure": "pwd",
+        "mono-vir-test:success": "pwd",
         "test": "virmator test-web",
-        "test:coverage": "npm test coverage",
-        "tsc-mono-test:one-failure": "pwd",
-        "tsc-mono-test:success": "pwd"
+        "test:coverage": "npm test coverage"
     },
     "dependencies": {
         "@augment-vir/common": "^13.2.1"

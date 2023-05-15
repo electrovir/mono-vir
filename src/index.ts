@@ -1,3 +1,3 @@
-export * from './tsc-mono/run-tsc-mono';
-export * from './tsc-mono/tsc-mono-commands';
-export * from './tsc-mono/tsc-mono-inputs';
+export * from './mono-vir/mono-vir-commands';
+export * from './mono-vir/mono-vir-inputs';
+export * from './mono-vir/run-mono-vir';

@@ -7,11 +7,11 @@
     "types": "dist/types/index.d.ts",
     "scripts": {
         "compile": "tsc --project tsconfig.json && tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json",
+        "mono-vir-test:one-failure": "pwd",
+        "mono-vir-test:success": "pwd",
         "test": "echo \"use common-test to run tests\" && exit 0",
         "test:coverage": "npm test",
-        "test:types": "tsc --noEmit",
-        "tsc-mono-test:one-failure": "pwd",
-        "tsc-mono-test:success": "pwd"
+        "test:types": "tsc --noEmit"
     },
     "dependencies": {
         "type-fest": "^3.7.1"

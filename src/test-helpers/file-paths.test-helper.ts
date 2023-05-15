@@ -1,8 +1,8 @@
 import {dirname, join} from 'path';
 
-export const tscMonoRepoRootPath = dirname(dirname(__dirname));
+export const monoVirRepoRootPath = dirname(dirname(__dirname));
 
-const testFilesDirPath = join(tscMonoRepoRootPath, 'test-files');
+const testFilesDirPath = join(monoVirRepoRootPath, 'test-files');
 
 export const testRepos = {
     'augment-vir': join(testFilesDirPath, 'augment-vir'),

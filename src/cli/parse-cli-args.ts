@@ -1,25 +1,25 @@
 import {isEnumValue} from '@augment-vir/common';
 import {resolve} from 'path';
-import {tscMonoBinName} from '../package-names';
-import {TscMonoCommandEnum} from '../tsc-mono/tsc-mono-commands';
-import {TscMonoInputs} from '../tsc-mono/tsc-mono-inputs';
+import {MonoVirCommandEnum} from '../mono-vir/mono-vir-commands';
+import {MonoVirInputs} from '../mono-vir/mono-vir-inputs';
+import {monoVirBinName} from '../package-names';
 
 export const noHelpFlag = '--no-help';
 
-export function parseArgs(args: ReadonlyArray<string>, cliFileName: string): TscMonoInputs {
+export function parseArgs(args: ReadonlyArray<string>, cliFileName: string): MonoVirInputs {
     const commandStartIndex = args.findIndex((arg) => {
         return (
-            arg.endsWith(`/${tscMonoBinName}`) ||
-            arg === tscMonoBinName ||
+            arg.endsWith(`/${monoVirBinName}`) ||
+            arg === monoVirBinName ||
             resolve(arg) === cliFileName
         );
     });
 
     if (commandStartIndex === -1) {
         throw new Error(
-            `Failed to find '${tscMonoBinName}' in '${args.join(
+            `Failed to find '${monoVirBinName}' in '${args.join(
                 ' ',
-            )}'. Make sure you're using the '${tscMonoBinName}' command.`,
+            )}'. Make sure you're using the '${monoVirBinName}' command.`,
         );
     }
 
@@ -29,11 +29,11 @@ export function parseArgs(args: ReadonlyArray<string>, cliFileName: string): Tsc
 
     const commandInput = commandInputs[0];
 
-    if (!isEnumValue(commandInput, TscMonoCommandEnum)) {
-        throw new Error(`Unknown '${tscMonoBinName}' command given: '${commandInput}'`);
+    if (!isEnumValue(commandInput, MonoVirCommandEnum)) {
+        throw new Error(`Unknown '${monoVirBinName}' command given: '${commandInput}'`);
     }
 
-    const currentCliCommand: TscMonoCommandEnum = commandInput;
+    const currentCliCommand: MonoVirCommandEnum = commandInput;
     const cliCommandInputs: ReadonlyArray<string> = commandInputs.slice(1);
 
     return {

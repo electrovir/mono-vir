@@ -4,10 +4,10 @@
     "private": true,
     "scripts": {
         "compile": "tsc --pretty",
+        "mono-vir-test:one-failure": "pwd",
+        "mono-vir-test:success": "pwd",
         "test": "virmator test",
         "test:coverage": "npm test coverage",
-        "tsc-mono-test:one-failure": "pwd",
-        "tsc-mono-test:success": "pwd",
         "verify": "ts-node src/index.ts"
     },
     "dependencies": {

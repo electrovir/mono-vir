@@ -1,2 +1,2 @@
-export const tscMonoBinName = 'tsc-mono';
-export const tscMonoPackageName = 'tsc-mono';
+export const monoVirBinName = 'mono-vir';
+export const monoVirPackageName = 'mono-vir';

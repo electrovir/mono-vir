@@ -1,10 +1,8 @@
 {
-    "name": "tsc-mono",
+    "name": "mono-vir",
     "version": "2.1.2",
-    "description": "Super simple typescript mono-repo tooling.",
+    "description": "Super simple npm based mono-repo tooling.",
     "keywords": [
-        "tsc",
-        "typescript",
         "monorepo",
         "mono",
         "repo",
@@ -14,13 +12,13 @@
         "tooling",
         "for each"
     ],
-    "homepage": "https://github.com/electrovir/tsc-mono",
+    "homepage": "https://github.com/electrovir/mono-vir",
     "bugs": {
-        "url": "https://github.com/electrovir/tsc-mono/issues"
+        "url": "https://github.com/electrovir/mono-vir/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/electrovir/tsc-mono"
+        "url": "https://github.com/electrovir/mono-vir"
     },
     "license": "MIT",
     "author": {
@@ -30,7 +28,7 @@
     "main": "dist/cli.js",
     "types": "dist/cli.d.ts",
     "bin": {
-        "tsc-mono": "dist/cli/cli.js"
+        "mono-vir": "dist/cli/cli.js"
     },
     "scripts": {
         "compile": "rm -rf dist && virmator compile",
