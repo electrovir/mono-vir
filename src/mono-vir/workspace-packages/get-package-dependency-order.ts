@@ -1,9 +1,9 @@
 import {mapObjectValues} from '@augment-vir/common';
-import {getPackages, NpmPackage} from './get-packages';
+import {getNpmPackages, NpmPackage} from './get-npm-packages';
 import {createFlattenedTree} from './string-tree/string-tree';
 
 export async function getPackageDependencyOrder(cwd: string): Promise<string[]> {
-    const npmPackagesArray = await getPackages(cwd);
+    const npmPackagesArray = await getNpmPackages(cwd);
     const npmPackagesByName: Readonly<Record<string, NpmPackage>> = Object.fromEntries(
         npmPackagesArray.map((npmPackage): [string, NpmPackage] => {
             return [

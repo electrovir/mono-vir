@@ -7,7 +7,7 @@ export type NpmPackage = {
     allDeps: string[];
 };
 
-export async function getPackages(cwd: string): Promise<NpmPackage[]> {
+export async function getNpmPackages(cwd: string): Promise<NpmPackage[]> {
     const queryOutput = await runShellCommand('npm query .workspace', {
         cwd,
         rejectOnError: true,

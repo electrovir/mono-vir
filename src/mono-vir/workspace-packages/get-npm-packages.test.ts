@@ -1,9 +1,9 @@
 import {itCases} from '@augment-vir/chai';
 import {testRepos} from '../../test-helpers/file-paths.test-helper';
-import {getPackages} from './get-packages';
+import {getNpmPackages} from './get-npm-packages';
 
-describe(getPackages.name, () => {
-    itCases(getPackages, [
+describe(getNpmPackages.name, () => {
+    itCases(getNpmPackages, [
         {
             it: 'gets only typescript project directories',
             input: testRepos['augment-vir'],
