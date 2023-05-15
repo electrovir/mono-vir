@@ -20,7 +20,7 @@
         "type": "git",
         "url": "https://github.com/electrovir/mono-vir"
     },
-    "license": "MIT",
+    "license": "(MIT or CC0 1.0)",
     "author": {
         "name": "electrovir",
         "url": "https://github.com/electrovir"
@@ -36,7 +36,7 @@
         "format": "virmator format",
         "publish": "virmator publish \"npm run compile && npm run test:all\"",
         "test": "npm run compile && test-as-package \"virmator test\"",
-        "test:all": "npm run test:types && npm run test:coverage && npm run test:spelling && npm run test:format && npm run test:docs",
+        "test:all": "concurrently --kill-others-on-fail \"npm run test:types\" \"npm run test:coverage\" \"npm run test:spelling\" \"npm run test:format\" \"npm run test:docs\"",
         "test:coverage": "npm run test coverage",
         "test:debug": "npm test -- --inspect-brk",
         "test:docs": "virmator code-in-markdown check",
@@ -56,6 +56,7 @@
         "@types/mocha": "^10.0.1",
         "@types/node": "^20.1.4",
         "chai": "^4.3.7",
+        "concurrently": "^8.0.1",
         "cspell": "^6.31.1",
         "esbuild": "^0.17.19",
         "istanbul-smart-text-reporter": "^1.1.1",
