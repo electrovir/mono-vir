@@ -1,0 +1,26 @@
+{
+    "name": "@augment-vir/chai",
+    "version": "13.2.1",
+    "private": true,
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "types": "dist/types/index.d.ts",
+    "scripts": {
+        "compile": "tsc --project tsconfig.json && tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json",
+        "test": "echo \"chai augments are already tested by the testing package\" && exit 0",
+        "test:coverage": "npm test",
+        "tsc-mono-test:success": "pwd"
+    },
+    "dependencies": {
+        "@augment-vir/common": "^13.2.1",
+        "@augment-vir/testing": "^13.2.1",
+        "@types/chai-as-promised": "^7.1.5",
+        "chai-as-promised": "^7.1.1",
+        "expect-type": "^0.15.0",
+        "test-established-expectations": "^0.3.0",
+        "type-fest": "^3.7.1"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.2"
+    }
+}

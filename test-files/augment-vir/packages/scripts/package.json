@@ -1,0 +1,31 @@
+{
+    "name": "@augment-vir/scripts",
+    "version": "13.2.1",
+    "private": true,
+    "scripts": {
+        "compile": "tsc --pretty",
+        "test": "virmator test",
+        "test:coverage": "npm test coverage",
+        "tsc-mono-test:one-failure": "pwd",
+        "tsc-mono-test:success": "pwd",
+        "verify": "ts-node src/index.ts"
+    },
+    "dependencies": {
+        "@augment-vir/common": "^13.2.1",
+        "@augment-vir/node-js": "^13.2.1"
+    },
+    "devDependencies": {
+        "@electrovir/nyc": "^15.1.0-fix0",
+        "@istanbuljs/nyc-config-typescript": "^1.0.2",
+        "@types/chai": "^4.3.4",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "^18.15.10",
+        "chai": "^4.3.7",
+        "istanbul-smart-text-reporter": "^1.1.1",
+        "mocha": "^10.2.0",
+        "mocha-spec-reporter-with-file-names": "^0.0.3",
+        "ts-node": "^10.9.1",
+        "type-fest": "^3.7.1",
+        "typescript": "^5.0.2"
+    }
+}

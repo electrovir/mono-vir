@@ -1,0 +1,14 @@
+{
+    "name": "@electrovir/nested-b",
+    "version": "0.0.0",
+    "private": true,
+    "license": "MIT",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "compile": "rm -rf dist && tsc"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    }
+}

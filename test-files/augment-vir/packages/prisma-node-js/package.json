@@ -1,0 +1,22 @@
+{
+    "name": "@augment-vir/prisma-node-js",
+    "version": "13.2.1",
+    "private": true,
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "compile": "tsc --pretty",
+        "test": "echo \"no tests yet\" && exit 0",
+        "test:coverage": "npm test",
+        "tsc-mono-test:one-failure": "pwd",
+        "tsc-mono-test:success": "pwd"
+    },
+    "dependencies": {
+        "@augment-vir/common": "^13.2.1",
+        "@augment-vir/node-js": "^13.2.1"
+    },
+    "devDependencies": {
+        "istanbul-smart-text-reporter": "^1.1.1",
+        "typescript": "^5.0.2"
+    }
+}

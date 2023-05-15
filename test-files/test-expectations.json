@@ -1,0 +1,24 @@
+{
+    "cli": {
+        "successfully runs for-each": {
+            "stdout": "\u001b[90mpackages/common > npm run --silent tsc-mono-test:success\u001b[0m\n.//test-files/augment-vir/packages/common\n\u001b[90mpackages/testing > npm run --silent tsc-mono-test:success\u001b[0m\n.//test-files/augment-vir/packages/testing\n\u001b[90mpackages/browser-testing > npm run --silent tsc-mono-test:success\u001b[0m\n.//test-files/augment-vir/packages/browser-testing\n\u001b[90mpackages/chai > npm run --silent tsc-mono-test:success\u001b[0m\n.//test-files/augment-vir/packages/chai\n\u001b[90mpackages/browser > npm run --silent tsc-mono-test:success\u001b[0m\n.//test-files/augment-vir/packages/browser\n\u001b[90mpackages/element-vir > npm run --silent tsc-mono-test:success\u001b[0m\n.//test-files/augment-vir/packages/element-vir\n\u001b[90mpackages/node-js > npm run --silent tsc-mono-test:success\u001b[0m\n.//test-files/augment-vir/packages/node-js\n\u001b[90mpackages/common-tests > npm run --silent tsc-mono-test:success\u001b[0m\n.//test-files/augment-vir/packages/common-tests\n\u001b[90mpackages/docker > npm run --silent tsc-mono-test:success\u001b[0m\n.//test-files/augment-vir/packages/docker\n\u001b[90mpackages/prisma-node-js > npm run --silent tsc-mono-test:success\u001b[0m\n.//test-files/augment-vir/packages/prisma-node-js\n\u001b[90mpackages/scripts > npm run --silent tsc-mono-test:success\u001b[0m\n.//test-files/augment-vir/packages/scripts\n",
+            "stderr": "",
+            "exitCode": "0"
+        },
+        "errors if one of the scripts fails": {
+            "stdout": "\u001b[90mpackages/common > npm run --silent tsc-mono-test:one-failure\u001b[0m\n.//test-files/augment-vir/packages/common\n\u001b[90mpackages/testing > npm run --silent tsc-mono-test:one-failure\u001b[0m\n.//test-files/augment-vir/packages/testing\n\u001b[90mpackages/browser-testing > npm run --silent tsc-mono-test:one-failure\u001b[0m\n.//test-files/augment-vir/packages/browser-testing\n\u001b[90mpackages/chai > npm run --silent tsc-mono-test:one-failure\u001b[0m\n",
+            "stderr": "",
+            "exitCode": "1"
+        },
+        "errors if the given command is invalid": {
+            "stdout": "",
+            "stderr": "Unknown 'tsc-mono' command given: 'fake-command'\n",
+            "exitCode": "1"
+        },
+        "errors if no inputs are given to for-each": {
+            "stdout": "",
+            "stderr": "No inputs were given to the for-each command.\n",
+            "exitCode": "1"
+        }
+    }
+}
