@@ -4,14 +4,14 @@ ${monoVirPackageName} usage:
 
 ${monoVirBinName} <command> <command-inputs>
 
-    - <command>: command that you want ${monoVirPackageName} to run with this TS projects. Example: "for-each"
+    - <command>: command that you want ${monoVirPackageName} to run. Example: "for-each"
     - <command-inputs>: inputs for the given command. The options here will vary by command. Example: "npm run build"
 
 Commands:
 
 for-each
-    - runs the given <command-inputs> as a bash script for each of the TS projects
-    - projects are executed in dependency order
+    - runs the given <command-inputs> as a bash script for each of the repo's workspace packages
+    - packages are executed in dependency order
     
     Examples:
         - ${monoVirBinName} for-each npm run build

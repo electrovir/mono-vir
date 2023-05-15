@@ -3,13 +3,13 @@ import {log, runShellCommand} from '@augment-vir/node-js';
 import {join} from 'path';
 import {UserCommandFailedError} from '../cli/user-command-failed.error';
 import {monoVirPackageName} from '../package-names';
-import {getProjectDependencyOrder} from './dependency-ordering/get-project-dependency-order';
+import {getPackageDependencyOrder} from './dependency-ordering/get-package-dependency-order';
 import {MonoVirCommandEnum} from './mono-vir-commands';
 import {MonoVirInputs} from './mono-vir-inputs';
 
 export async function runMonoVir({command, commandInputs, cwd}: MonoVirInputs) {
     if (command === MonoVirCommandEnum.ForEach) {
-        const dependencyOrdering = await getProjectDependencyOrder(cwd);
+        const dependencyOrdering = await getPackageDependencyOrder(cwd);
 
         if (!dependencyOrdering.length) {
             throw new Error(

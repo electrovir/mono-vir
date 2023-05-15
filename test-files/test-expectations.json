@@ -12,12 +12,12 @@
         },
         "errors if the given command is invalid": {
             "stdout": "",
-            "stderr": "Unknown 'mono-vir' command given: 'fake-command'\n",
+            "stderr": "\u001b[31m\u001b[1mUnknown 'mono-vir' command given: 'fake-command'\u001b[0m\n",
             "exitCode": "1"
         },
         "errors if no inputs are given to for-each": {
             "stdout": "",
-            "stderr": "No inputs were given to the for-each command.\n",
+            "stderr": "\u001b[31m\u001b[1mNo inputs were given to the for-each command.\u001b[0m\n",
             "exitCode": "1"
         }
     }

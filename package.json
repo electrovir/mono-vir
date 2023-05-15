@@ -46,8 +46,7 @@
     },
     "dependencies": {
         "@augment-vir/common": "13.4.0",
-        "@augment-vir/node-js": "13.4.0",
-        "dependency-cruiser": "^13.0.0"
+        "@augment-vir/node-js": "13.4.0"
     },
     "devDependencies": {
         "@augment-vir/chai": "13.4.0",

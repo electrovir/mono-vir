@@ -1,9 +1,9 @@
 import {itCases} from '@augment-vir/chai';
 import {testRepos} from '../../test-helpers/file-paths.test-helper';
-import {getProjectDependencyOrder} from './get-project-dependency-order';
+import {getPackageDependencyOrder} from './get-package-dependency-order';
 
-describe(getProjectDependencyOrder.name, () => {
-    itCases(getProjectDependencyOrder, [
+describe(getPackageDependencyOrder.name, () => {
+    itCases(getPackageDependencyOrder, [
         {
             it: 'reports the ts projects in correct order',
             input: testRepos['augment-vir'],
