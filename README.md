@@ -1,78 +1,53 @@
-# moon-vir
+# mono-vir
 
-Super simple typescript mono-repo tooling.
+Super simple npm mono-repo tooling.
 
-It is recommended that you use at least TypeScript v5 as TypeScript v4 is significantly slower.
+Uses npm workspaces and `package.json` dependencies to determine build order.
 
 ## Features
 
--   runs commands for each TS project in correct order based on the projects' dependency graph
--   relies on `package.json`'s `workspaces` property: no need to duplicate this information
+-   runs commands for each package in correct order based on each package's dependency graph
+-   relies on `package.json`'s `workspaces` property: no need to duplicate this information in another config
 -   [TSConfig reference paths](https://www.typescriptlang.org/docs/handbook/project-references.html) are not required
--   [TSConfig option `composite`](https://www.typescriptlang.org/tsconfig#composite) is not required
--   [TSConfig option `declarationMap`](https://www.typescriptlang.org/tsconfig#declarationMap) is not required
--   no need to manually list all your TS projects' inter-repo dependencies
-
-## Speed
-
-This is likely not the fastest way to build a mono-repo. However, it is intended to be most _stable_. After constantly fighting against `tsc`'s poor mono-repo tooling, and not desiring a full-blown mono-repo management tool (like Bazel) for simple projects, I finally built this.
+-   [TSConfig `composite` option](https://www.typescriptlang.org/tsconfig#composite) is not required
+-   [TSConfig `declarationMap` option](https://www.typescriptlang.org/tsconfig#declarationMap) is not required
 
 ## Installation
 
 ```bash
-npm i moon-vir
+npm i mono-vir
 ```
 
 ## Usage
 
-It is recommended to first setup [npm workspaces](https://docs.npmjs.com/cli/using-npm/workspaces) (if you use npm) as you must use package name imports to import between each in-repo TS project.
+Note: You must first setup [npm workspaces](https://docs.npmjs.com/cli/using-npm/workspaces) (use a `workspaces` property in your `package.json`).
 
 ```bash
-moon-vir <command> <command-inputs>
+mono-vir <command> <command-inputs>
 ```
 
--   `<command>`: the `moon-vir` command you wish to run.
--   `<command-inputs>`: inputs to the `moon-vir` command in the bullet above. Currently there is only one command: `for-each`.
+-   `<command>`: the `mono-vir` command you wish to run.
+-   `<command-inputs>`: inputs to the `mono-vir` command in the bullet above.
 
 ### `for-each`
 
-`for-each` will run a given bash command for each TS project. The `<command-inputs>` are considered the bash command to run. Projects will be run in order based on their dependency graph.
+`for-each` will run a given bash command for each workspace package. The `<command-inputs>` are considered the bash command to run. Projects will be run in order based on their dependency graph.
 
 Examples:
 
--   run type checking for each TS project:
+-   run type checking for each workspace package:
     ```bash
-    npx moon-vir for-each tsc --noEmit
+    npx mono-vir for-each tsc --noEmit
     ```
--   run "npm start" for each TS project:
+-   run "npm start" for each workspace package:
     ```bash
-    npx moon-vir for-each npm start
+    npx mono-vir for-each npm start
     ```
+
+### `for-each-async`
+
+`for-each-async` is exactly the same as `for-each` but it runs the command for each package in parallel.
 
 ## Full Example
 
-To see an example repo setup that this package works for, go to this package's test files: https://github.com/electrovir/moon-vir/tree/main/test-files/augment-vir
-
-## Help output
-
-Help message from the CLI:
-
-```
-moon-vir usage:
-
-moon-vir <command> <command-inputs>
-
-    - <command>: command that you want moon-vir to run with this TS projects. Example: "for-each"
-    - <command-inputs>: inputs for the given command. The options here will vary by command. Example: "npm run build"
-
-Commands:
-
-for-each
-    - runs the given <command-inputs> as a bash script for each of the TS projects
-    - projects are executed in dependency order
-
-    Examples:
-        - moon-vir for-each npm run build
-        - moon-vir for-each "npm run build && echo success"
-
-```
+To see an example repo setup that this package works for, go to this package's test files: https://github.com/electrovir/mono-vir/tree/main/test-files/augment-vir

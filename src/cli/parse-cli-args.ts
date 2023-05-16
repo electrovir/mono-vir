@@ -3,6 +3,7 @@ import {resolve} from 'path';
 import {MonoVirCommandEnum} from '../mono-vir/mono-vir-commands';
 import {MonoVirInputs} from '../mono-vir/mono-vir-inputs';
 import {monoVirBinName} from '../package-names';
+import {MonoCliInputError} from './mono-command-failed.error';
 
 export const noHelpFlag = '--no-help';
 
@@ -16,7 +17,7 @@ export function parseArgs(args: ReadonlyArray<string>, cliFileName: string): Mon
     });
 
     if (commandStartIndex === -1) {
-        throw new Error(
+        throw new MonoCliInputError(
             `Failed to find '${monoVirBinName}' in '${args.join(
                 ' ',
             )}'. Make sure you're using the '${monoVirBinName}' command.`,
@@ -30,7 +31,7 @@ export function parseArgs(args: ReadonlyArray<string>, cliFileName: string): Mon
     const commandInput = commandInputs[0];
 
     if (!isEnumValue(commandInput, MonoVirCommandEnum)) {
-        throw new Error(`Unknown '${monoVirBinName}' command given: '${commandInput}'`);
+        throw new MonoCliInputError(`Unknown '${monoVirBinName}' command given: '${commandInput}'`);
     }
 
     const currentCliCommand: MonoVirCommandEnum = commandInput;

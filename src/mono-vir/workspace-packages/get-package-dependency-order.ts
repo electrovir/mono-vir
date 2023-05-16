@@ -1,8 +1,11 @@
 import {mapObjectValues} from '@augment-vir/common';
+import {toPosixPath} from '@augment-vir/node-js';
 import {getNpmPackages, NpmPackage} from './get-npm-packages';
 import {createFlattenedTree} from './string-tree/string-tree';
 
-export async function getPackageDependencyOrder(cwd: string): Promise<string[]> {
+export async function getRelativePosixPackagePathsInDependencyOrder(
+    cwd: string,
+): Promise<string[]> {
     const npmPackagesArray = await getNpmPackages(cwd);
     const npmPackagesByName: Readonly<Record<string, NpmPackage>> = Object.fromEntries(
         npmPackagesArray.map((npmPackage): [string, NpmPackage] => {
@@ -32,7 +35,7 @@ export async function getPackageDependencyOrder(cwd: string): Promise<string[]> 
             throw new Error(`Failed to find package by name '${npmName}'`);
         }
 
-        return npmPackage.dirRelativePath;
+        return toPosixPath(npmPackage.dirRelativePath);
     });
 
     return depsByDirName;

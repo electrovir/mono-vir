@@ -1,23 +1,41 @@
 {
     "cli": {
-        "successfully runs for-each": {
+        "for-each: successfully runs for-each": {
             "stdout": "\u001b[90mpackages/common > npm run --silent mono-vir-test:success\u001b[0m\n.//test-files/augment-vir/packages/common\n\u001b[90mpackages/testing > npm run --silent mono-vir-test:success\u001b[0m\n.//test-files/augment-vir/packages/testing\n\u001b[90mpackages/browser-testing > npm run --silent mono-vir-test:success\u001b[0m\n.//test-files/augment-vir/packages/browser-testing\n\u001b[90mpackages/chai > npm run --silent mono-vir-test:success\u001b[0m\n.//test-files/augment-vir/packages/chai\n\u001b[90mpackages/browser > npm run --silent mono-vir-test:success\u001b[0m\n.//test-files/augment-vir/packages/browser\n\u001b[90mpackages/element-vir > npm run --silent mono-vir-test:success\u001b[0m\n.//test-files/augment-vir/packages/element-vir\n\u001b[90mpackages/node-js > npm run --silent mono-vir-test:success\u001b[0m\n.//test-files/augment-vir/packages/node-js\n\u001b[90mpackages/common-tests > npm run --silent mono-vir-test:success\u001b[0m\n.//test-files/augment-vir/packages/common-tests\n\u001b[90mpackages/docker > npm run --silent mono-vir-test:success\u001b[0m\n.//test-files/augment-vir/packages/docker\n\u001b[90mpackages/prisma-node-js > npm run --silent mono-vir-test:success\u001b[0m\n.//test-files/augment-vir/packages/prisma-node-js\n\u001b[90mpackages/scripts > npm run --silent mono-vir-test:success\u001b[0m\n.//test-files/augment-vir/packages/scripts\n",
             "stderr": "",
             "exitCode": "0"
         },
-        "errors if one of the scripts fails": {
+        "for-each: errors if one of the scripts fails": {
             "stdout": "\u001b[90mpackages/common > npm run --silent mono-vir-test:one-failure\u001b[0m\n.//test-files/augment-vir/packages/common\n\u001b[90mpackages/testing > npm run --silent mono-vir-test:one-failure\u001b[0m\n.//test-files/augment-vir/packages/testing\n\u001b[90mpackages/browser-testing > npm run --silent mono-vir-test:one-failure\u001b[0m\n.//test-files/augment-vir/packages/browser-testing\n\u001b[90mpackages/chai > npm run --silent mono-vir-test:one-failure\u001b[0m\n",
-            "stderr": "",
+            "stderr": "\u001b[31m\u001b[1mCommand failed: npm run --silent mono-vir-test:one-failure\u001b[0m\n",
             "exitCode": "1"
         },
-        "errors if the given command is invalid": {
+        "for-each: errors if the given command is invalid": {
             "stdout": "",
             "stderr": "\u001b[31m\u001b[1mUnknown 'mono-vir' command given: 'fake-command'\u001b[0m\n",
             "exitCode": "1"
         },
-        "errors if no inputs are given to for-each": {
+        "for-each: errors if no inputs are given to for-each": {
             "stdout": "",
             "stderr": "\u001b[31m\u001b[1mNo inputs were given to the for-each command.\u001b[0m\n",
+            "exitCode": "1"
+        },
+        "for-each-async: successfully runs for-each-async": {
+            "stderr": "",
+            "exitCode": "0"
+        },
+        "for-each-async: errors if one of the scripts fails": {
+            "stderr": "\u001b[31m\u001b[1m'npm run --silent mono-vir-test:one-failure' failed for chai\u001b[0m\n",
+            "exitCode": "1"
+        },
+        "for-each-async: errors if the given command is invalid": {
+            "stdout": "",
+            "stderr": "\u001b[31m\u001b[1mUnknown 'mono-vir' command given: 'fake-command'\u001b[0m\n",
+            "exitCode": "1"
+        },
+        "for-each-async: errors if no inputs are given to for-each-async": {
+            "stdout": "",
+            "stderr": "\u001b[31m\u001b[1mNo inputs were given to the for-each-async command.\u001b[0m\n",
             "exitCode": "1"
         }
     }

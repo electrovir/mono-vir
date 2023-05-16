@@ -1,3 +1,3 @@
-export class MonoCommandFailedError extends Error {
-    public override name = 'MonoCommandFailedError';
+export class MonoCliInputError extends Error {
+    public override name = 'MonoCliInputError';
 }

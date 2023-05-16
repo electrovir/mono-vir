@@ -5,7 +5,7 @@ import {getNpmPackages} from './get-npm-packages';
 describe(getNpmPackages.name, () => {
     itCases(getNpmPackages, [
         {
-            it: 'gets only typescript project directories',
+            it: 'gets all npm dependencies',
             input: testRepos['augment-vir'],
             expect: [
                 {
