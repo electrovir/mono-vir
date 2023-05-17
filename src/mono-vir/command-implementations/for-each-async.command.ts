@@ -39,7 +39,9 @@ export async function runForEachAsyncCommand({cwd, commandInputs}: ReadonlyDeep<
     let failed = false;
 
     try {
-        concurrentlyResults = await concurrently(commands).result;
+        concurrentlyResults = await concurrently(commands, {
+            prefixColors: ['auto'],
+        }).result;
     } catch (error) {
         failed = true;
         if (Array.isArray(error)) {
