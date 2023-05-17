@@ -1,6 +1,6 @@
 {
     "name": "mono-vir",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Super simple npm based mono-repo tooling.",
     "keywords": [
         "monorepo",
@@ -45,17 +45,17 @@
         "test:types": "tsc --noEmit"
     },
     "dependencies": {
-        "@augment-vir/common": "^13.4.0",
-        "@augment-vir/node-js": "^13.4.0",
+        "@augment-vir/common": "^13.5.0",
+        "@augment-vir/node-js": "^13.5.0",
         "concurrently": "^8.0.1"
     },
     "devDependencies": {
-        "@augment-vir/chai": "13.4.0",
+        "@augment-vir/chai": "13.5.0",
         "@electrovir/nyc": "^15.1.0-fix0",
         "@istanbuljs/nyc-config-typescript": "^1.0.2",
         "@types/chai": "^4.3.5",
         "@types/mocha": "^10.0.1",
-        "@types/node": "^20.1.4",
+        "@types/node": "^20.1.7",
         "chai": "^4.3.7",
         "cspell": "^6.31.1",
         "esbuild": "^0.17.19",
