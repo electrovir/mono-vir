@@ -3,18 +3,11 @@ import {log, runShellCommand} from '@augment-vir/node-js';
 import {join} from 'path';
 import {ReadonlyDeep} from 'type-fest';
 import {MonoCliInputError} from '../../cli/mono-command-failed.error';
-import {monoVirPackageName} from '../../package-names';
 import {CommandInputs} from '../command';
 import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packages/get-package-dependency-order';
 
 export async function runForEachCommand({cwd, commandInputs}: ReadonlyDeep<CommandInputs>) {
     const relativePackagePathsInOrder = await getRelativePosixPackagePathsInDependencyOrder(cwd);
-
-    if (!relativePackagePathsInOrder.length) {
-        throw new Error(
-            `${monoVirPackageName} found no packages. Be sure that you are using the "workspaces" package.json field.`,
-        );
-    }
 
     const shellCommand = commandInputs.join(' ');
 

@@ -1,5 +1,6 @@
 import {mapObjectValues} from '@augment-vir/common';
 import {toPosixPath} from '@augment-vir/node-js';
+import {monoVirPackageName} from '../../package-names';
 import {getNpmPackages, NpmPackage} from './get-npm-packages';
 import {createFlattenedTree} from './string-tree/string-tree';
 
@@ -37,6 +38,12 @@ export async function getRelativePosixPackagePathsInDependencyOrder(
 
         return toPosixPath(npmPackage.dirRelativePath);
     });
+
+    if (!depsByDirName.length) {
+        throw new Error(
+            `${monoVirPackageName} found no packages. Be sure that you are using the 'workspaces' package.json field and that you have run 'npm i' recently.`,
+        );
+    }
 
     return depsByDirName;
 }
