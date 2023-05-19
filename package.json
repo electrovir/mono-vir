@@ -1,6 +1,6 @@
 {
     "name": "mono-vir",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Super simple npm based mono-repo tooling.",
     "keywords": [
         "monorepo",
@@ -45,17 +45,17 @@
         "test:types": "tsc --noEmit"
     },
     "dependencies": {
-        "@augment-vir/common": "^13.5.0",
-        "@augment-vir/node-js": "^13.5.0",
+        "@augment-vir/common": "14.2.0",
+        "@augment-vir/node-js": "14.2.0",
         "concurrently": "^8.0.1"
     },
     "devDependencies": {
-        "@augment-vir/chai": "13.5.0",
+        "@augment-vir/chai": "14.2.0",
         "@electrovir/nyc": "^15.1.0-fix0",
         "@istanbuljs/nyc-config-typescript": "^1.0.2",
         "@types/chai": "^4.3.5",
         "@types/mocha": "^10.0.1",
-        "@types/node": "^20.1.7",
+        "@types/node": "^20.2.1",
         "chai": "^4.3.7",
         "cspell": "^6.31.1",
         "esbuild": "^0.17.19",
@@ -73,10 +73,10 @@
         "prettier-plugin-sort-json": "^1.0.0",
         "prettier-plugin-toml": "^0.3.1",
         "test-as-package": "^0.0.4",
-        "test-established-expectations": "^0.3.0",
+        "test-established-expectations": "^0.5.0",
         "ts-node": "^10.9.1",
         "type-fest": "^3.10.0",
         "typescript": "^5.0.4",
-        "virmator": "^6.5.1"
+        "virmator": "^6.5.2"
     }
 }
