@@ -31,9 +31,12 @@ export async function runForEachAsyncCommand({cwd, commandInputs}: ReadonlyDeep<
     let concurrentlyResults: ReadonlyArray<CloseEvent> = [];
     let failed = false;
 
+    process.env.FORCE_COLOR = '1';
     try {
         concurrentlyResults = await concurrently(commands, {
             prefixColors: ['auto'],
+            killOthers: 'failure',
+            killSignal: 'SIGKILL',
         }).result;
     } catch (error) {
         failed = true;
