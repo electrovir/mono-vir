@@ -1,11 +1,10 @@
 {
-    "extends": "virmator/base-configs/base-tsconfig.json",
     "compilerOptions": {
-        "preserveSymlinks": true,
-        "noEmitOnError": false,
-        "target": "ES2020",
         "composite": false,
-        "declarationMap": false
+        "declarationMap": false,
+        "noEmitOnError": false,
+        "preserveSymlinks": true,
+        "target": "ES2020"
     },
     "exclude": [
         "./configs",
@@ -13,6 +12,7 @@
         "./node_modules",
         "packages/node-js/test-files"
     ],
+    "extends": "virmator/base-configs/base-tsconfig.json",
     "ts-node": {
         "transpileOnly": true
     }

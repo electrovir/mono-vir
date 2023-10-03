@@ -1,15 +1,15 @@
 {
-    "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-        "rootDir": "./src",
-        "outDir": "./dist",
+        "baseUrl": "./src",
         "module": "ES2020",
-        "baseUrl": "./src"
+        "outDir": "./dist",
+        "rootDir": "./src"
     },
     "exclude": [
         "./configs",
         "./dist",
         "./node_modules",
         "./test-files"
-    ]
+    ],
+    "extends": "../../tsconfig.base.json"
 }

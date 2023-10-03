@@ -1,14 +1,14 @@
 {
-    "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-        "rootDir": "./src",
+        "module": "CommonJS",
         "outDir": "./dist",
-        "module": "CommonJS"
+        "rootDir": "./src"
     },
     "exclude": [
         "./configs",
         "./dist",
         "./node_modules",
         "./test-files"
-    ]
+    ],
+    "extends": "../../tsconfig.base.json"
 }
