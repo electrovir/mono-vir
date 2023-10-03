@@ -3,7 +3,7 @@ import {resolve} from 'path';
 import {MonoVirCommandEnum} from '../mono-vir/mono-vir-commands';
 import {MonoVirInputs} from '../mono-vir/mono-vir-inputs';
 import {monoVirBinName} from '../package-names';
-import {MonoCliInputError} from './mono-command-failed.error';
+import {MonoCliInputError} from './mono-cli-input.error';
 
 export const noHelpFlag = '--no-help';
 

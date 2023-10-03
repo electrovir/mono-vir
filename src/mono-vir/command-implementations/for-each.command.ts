@@ -2,7 +2,7 @@ import {awaitedForEach} from '@augment-vir/common';
 import {log, runShellCommand} from '@augment-vir/node-js';
 import {join} from 'path';
 import {ReadonlyDeep} from 'type-fest';
-import {MonoCliInputError} from '../../cli/mono-command-failed.error';
+import {MonoCliInputError} from '../../cli/mono-cli-input.error';
 import {CommandInputs} from '../command';
 import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packages/get-package-dependency-order';
 

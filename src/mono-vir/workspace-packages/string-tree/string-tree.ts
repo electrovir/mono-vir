@@ -7,7 +7,6 @@ type TreeNode = {
 };
 
 function createTree(deps: Record<string, Set<string>>): TreeNode[] {
-    const rootNodes: TreeNode[] = [];
     const nodesByValue: Record<string, TreeNode> = {};
 
     function getNode(value: string): TreeNode {
@@ -32,19 +31,15 @@ function createTree(deps: Record<string, Set<string>>): TreeNode[] {
         ]) => {
             const currentTreeNode: TreeNode = getNode(nodeValue);
 
-            if (nodeDeps.size) {
-                nodeDeps.forEach((dep) => {
-                    const depNode: TreeNode = getNode(dep);
-                    depNode.dependents.push(currentTreeNode);
-                    currentTreeNode.dependencies.push(depNode);
-                });
-            } else {
-                rootNodes.push(currentTreeNode);
-            }
+            nodeDeps.forEach((dep) => {
+                const depNode: TreeNode = getNode(dep);
+                depNode.dependents.push(currentTreeNode);
+                currentTreeNode.dependencies.push(depNode);
+            });
         },
     );
 
-    return rootNodes;
+    return Object.values(nodesByValue);
 }
 
 function flattenTree(tree: ReadonlyArray<TreeNode>): string[][] {
@@ -100,5 +95,12 @@ function flattenTree(tree: ReadonlyArray<TreeNode>): string[][] {
 
 export function createFlattenedTree(deps: Record<string, Set<string>>): string[][] {
     const tree = createTree(deps);
-    return flattenTree(tree);
+    const flattenedTree = flattenTree(tree);
+    const totallyFlatTree = flattenedTree.flat();
+    const missingDeps = Object.keys(deps).filter((key) => !totallyFlatTree.includes(key));
+    if (missingDeps.length) {
+        throw new Error(`Missing deps from generated tree: ${missingDeps.join(',')}`);
+    }
+
+    return flattenedTree;
 }

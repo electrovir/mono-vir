@@ -16,6 +16,6 @@
         "@augment-vir/node-js": "^13.2.1"
     },
     "devDependencies": {
-        "typescript": "^5.0.2"
+        "typescript": "^5.2.2"
     }
 }

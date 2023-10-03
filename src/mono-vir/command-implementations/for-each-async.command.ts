@@ -3,7 +3,7 @@ import {join} from 'path';
 import {ReadonlyDeep} from 'type-fest';
 import {CloseEvent} from '../../../node_modules/concurrently/dist/src/command';
 import {findLongestCommentPath} from '../../augments/path';
-import {MonoCliInputError} from '../../cli/mono-command-failed.error';
+import {MonoCliInputError} from '../../cli/mono-cli-input.error';
 import {CommandInputs} from '../command';
 import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packages/get-package-dependency-order';
 

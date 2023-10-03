@@ -72,6 +72,22 @@ describe(createFlattenedTree.name, () => {
             ],
         },
         {
+            it: 'errors on a tree with circular deps between non-root nodes',
+            input: {
+                '@my-app/app-backend': new Set(['@my-app/common-universal']),
+                '@my-app/app-frontend': new Set([]),
+                '@my-app/another-another-frontend': new Set([]),
+                '@my-app/common-backend': new Set([]),
+                '@my-app/common-universal': new Set(['@my-app/app-backend']),
+                '@my-app/another-backend': new Set(['@my-app/another-common']),
+                '@my-app/another-common': new Set([]),
+                '@my-app/another-frontend': new Set([]),
+                '@my-app/another-scripts': new Set([]),
+                '@my-app/services': new Set(['@my-app/common-universal']),
+            },
+            throws: Error,
+        },
+        {
             it: 'fails on a circular tree',
             input: {
                 grandparent: new Set([]),

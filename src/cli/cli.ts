@@ -4,7 +4,7 @@ import {extractErrorMessage} from '@augment-vir/common';
 import {log} from '@augment-vir/node-js';
 import {printHelpMessage} from '../help-message';
 import {runMonoVir} from '../mono-vir/run-mono-vir';
-import {MonoCliInputError} from './mono-command-failed.error';
+import {MonoCliInputError} from './mono-cli-input.error';
 import {noHelpFlag, parseArgs} from './parse-cli-args';
 
 async function cliMain() {
