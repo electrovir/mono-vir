@@ -1,6 +1,6 @@
 {
     "name": "mono-vir",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Super simple npm based mono-repo tooling.",
     "keywords": [
         "monorepo",
@@ -25,8 +25,8 @@
         "name": "electrovir",
         "url": "https://github.com/electrovir"
     },
-    "main": "dist/cli.js",
-    "types": "dist/cli.d.ts",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "bin": {
         "mono-vir": "dist/cli/cli.js"
     },
@@ -36,9 +36,9 @@
         "format": "virmator format",
         "publish": "virmator publish \"npm run compile && npm run test:all\"",
         "test": "cd test-files/augment-vir && npm i && cd ../nested-workspaces && npm i && cd ../../ && npm run compile && test-as-package \"virmator test\"",
-        "test:all": "npm run compile && concurrently --colors --kill-others-on-fail -c auto --names types,tests,spelling,format,docs \"npm run test:types\" \"npm run test:coverage\" \"npm run test:spelling\" \"npm run test:format\" \"npm run test:docs\"",
-        "test:coverage": "npm run test coverage",
+        "test:all": "npm run compile && concurrently --colors --kill-others-on-fail -c auto --names types,tests,spelling,format,docs,deps \"npm run test:types\" \"npm run test\" \"npm run test:spelling\" \"npm run test:format\" \"npm run test:docs\" \"npm run test:deps\"",
         "test:debug": "npm test -- --inspect-brk",
+        "test:deps": "virmator deps check",
         "test:docs": "virmator docs check",
         "test:format": "virmator format check",
         "test:spelling": "virmator spellcheck",
@@ -53,11 +53,12 @@
         "@augment-vir/chai": "16.2.0",
         "@electrovir/nyc": "^15.1.0-fix0",
         "@istanbuljs/nyc-config-typescript": "^1.0.2",
-        "@types/chai": "^4.3.6",
+        "@types/chai": "^4.3.7",
         "@types/mocha": "^10.0.2",
         "@types/node": "^20.4.8",
         "chai": "^4.3.10",
         "cspell": "^7.3.7",
+        "dependency-cruiser": "^14.1.1",
         "esbuild": "^0.19.4",
         "istanbul-smart-text-reporter": "^1.1.2",
         "markdown-code-example-inserter": "^0.3.2",
@@ -76,9 +77,9 @@
         "test-established-expectations": "^0.5.0",
         "ts-node": "^10.9.1",
         "type-fest": "^4.2.0",
-        "typedoc": "^0.25.1",
+        "typedoc": "^0.25.2",
         "typescript": "^5.2.2",
-        "virmator": "^8.0.5"
+        "virmator": "^9.0.1"
     },
     "overrides": {
         "semver": "^7.5.3"

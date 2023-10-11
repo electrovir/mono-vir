@@ -4,6 +4,10 @@ import {monoVirPackageName} from '../../package-names';
 import {getNpmPackages, NpmPackage} from './get-npm-packages';
 import {createFlattenedTree} from './string-tree/string-tree';
 
+/**
+ * Get a list of npm mono-repo packages (workspaces) in order based on how they depend on each
+ * other.
+ */
 export async function getRelativePosixPackagePathsInDependencyOrder(
     cwd: string,
 ): Promise<string[]> {

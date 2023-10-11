@@ -1,12 +1,17 @@
 import {queryNpmWorkspace} from '@augment-vir/node-js';
 
+/** Npm package properties relevant for mono-vir functionality. */
 export type NpmPackage = {
     dirRelativePath: string;
     npmName: string;
     allDeps: string[];
 };
 
-export async function getNpmPackages(cwd: string): Promise<NpmPackage[]> {
+/** Get a list of npm mono-repo packages (workspaces). */
+export async function getNpmPackages(
+    /** The directory to query npm from inside of. */
+    cwd: string,
+): Promise<NpmPackage[]> {
     const workspaceResults = await queryNpmWorkspace(cwd);
 
     return workspaceResults.map((workspaceEntry): NpmPackage => {
