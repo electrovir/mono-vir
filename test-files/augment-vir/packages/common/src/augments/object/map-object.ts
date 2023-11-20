@@ -68,16 +68,19 @@ export function mapObjectValues<EntireInputGeneric extends object, MappedValueGe
 ): MappedValues<EntireInputGeneric, MappedValueGeneric> {
     let gotAPromise = false;
 
-    const mappedObject = getObjectTypedKeys(inputObject).reduce((accum, currentKey) => {
-        const mappedValue = mapCallback(currentKey, inputObject[currentKey], inputObject);
-        if (mappedValue instanceof Promise) {
-            gotAPromise = true;
-        }
-        return {
-            ...accum,
-            [currentKey]: mappedValue,
-        };
-    }, {} as MappedValues<EntireInputGeneric, UnPromise<MappedValueGeneric>>);
+    const mappedObject = getObjectTypedKeys(inputObject).reduce(
+        (accum, currentKey) => {
+            const mappedValue = mapCallback(currentKey, inputObject[currentKey], inputObject);
+            if (mappedValue instanceof Promise) {
+                gotAPromise = true;
+            }
+            return {
+                ...accum,
+                [currentKey]: mappedValue,
+            };
+        },
+        {} as MappedValues<EntireInputGeneric, UnPromise<MappedValueGeneric>>,
+    );
 
     if (gotAPromise) {
         return new Promise<InnerMappedValues<EntireInputGeneric, UnPromise<MappedValueGeneric>>>(

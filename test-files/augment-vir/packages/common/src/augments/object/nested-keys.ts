@@ -29,10 +29,10 @@ export type NestedValue<
         ? FollowingEntries extends never[]
             ? ObjectGeneric[FirstEntry]
             : ObjectGeneric[FirstEntry] extends object
-            ? FollowingEntries extends NestedSequentialKeys<ObjectGeneric[FirstEntry]>
-                ? NestedValue<ObjectGeneric[FirstEntry], FollowingEntries>
-                : never
-            : never
+              ? FollowingEntries extends NestedSequentialKeys<ObjectGeneric[FirstEntry]>
+                  ? NestedValue<ObjectGeneric[FirstEntry], FollowingEntries>
+                  : never
+              : never
         : never
     : never;
 

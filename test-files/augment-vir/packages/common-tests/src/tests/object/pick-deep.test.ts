@@ -15,10 +15,10 @@ type InnerPickDeep<
                   : OriginalObjectGeneric[CurrentProp];
           }
         : DeepKeys extends [infer CurrentLevelPick]
-        ? CurrentLevelPick extends keyof OriginalObjectGeneric
-            ? Pick<OriginalObjectGeneric, CurrentLevelPick>
-            : never
-        : never
+          ? CurrentLevelPick extends keyof OriginalObjectGeneric
+              ? Pick<OriginalObjectGeneric, CurrentLevelPick>
+              : never
+          : never
 >;
 
 export type PickDeep<
