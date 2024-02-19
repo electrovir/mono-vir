@@ -9,17 +9,18 @@ export type NestedSequentialKeys<ObjectGeneric extends object> = PropertyValueTy
         : [Prop];
 }>;
 
-export type NestedKeys<ObjectGeneric extends object> = UnionToIntersection<
-    Extract<PropertyValueType<ObjectGeneric>, object>
-> extends object
-    ? [
-          keyof ObjectGeneric,
-          ...(
-              | NestedKeys<UnionToIntersection<Extract<PropertyValueType<ObjectGeneric>, object>>>
-              | []
-          ),
-      ]
-    : [keyof ObjectGeneric];
+export type NestedKeys<ObjectGeneric extends object> =
+    UnionToIntersection<Extract<PropertyValueType<ObjectGeneric>, object>> extends object
+        ? [
+              keyof ObjectGeneric,
+              ...(
+                  | NestedKeys<
+                        UnionToIntersection<Extract<PropertyValueType<ObjectGeneric>, object>>
+                    >
+                  | []
+              ),
+          ]
+        : [keyof ObjectGeneric];
 
 export type NestedValue<
     ObjectGeneric extends object,

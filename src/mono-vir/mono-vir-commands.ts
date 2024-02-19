@@ -6,10 +6,6 @@ export enum MonoVirCommandEnum {
     ForEachAsync = 'for-each-async',
 }
 
-// function commandNotImplementedYet() {
-//     throw new MonoCliInputError('Command not implemented yet.');
-// }
-
 /** Imports the command function so that only the needed files are imported at run-time. */
 type CommandImporter = () => Promise<CommandFunction>;
 
