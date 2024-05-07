@@ -110,6 +110,7 @@ describe(getNpmPackages.name, () => {
                         'istanbul-smart-text-reporter',
                         'typescript',
                         '@augment-vir/common',
+                        'element-vir',
                     ],
                 },
                 {

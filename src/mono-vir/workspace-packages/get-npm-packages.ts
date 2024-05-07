@@ -18,6 +18,7 @@ export async function getNpmPackages(
         const allDeps: NpmPackage['allDeps'] = [
             Object.keys(workspaceEntry.devDependencies || {}),
             Object.keys(workspaceEntry.dependencies || {}),
+            Object.keys(workspaceEntry.peerDependencies || {}),
         ].flat();
 
         if (!workspaceEntry.name) {
