@@ -12,18 +12,14 @@ import {
 describe(itCases.name, () => {
     const genericItCasesOptions = {assert, it, forceIt: it.only, excludeIt: it.skip};
 
-    itCases(
-        genericItCasesOptions,
-        () => {
-            throw new Error();
+    itCases(genericItCasesOptions, () => {
+        throw new Error();
+    }, [
+        {
+            throws: Error,
+            it: 'should pass when an expected error is caught',
         },
-        [
-            {
-                throws: Error,
-                it: 'should pass when an expected error is caught',
-            },
-        ],
-    );
+    ]);
     itCases(genericItCasesOptions, () => {}, [
         {
             throws: undefined,
@@ -31,23 +27,19 @@ describe(itCases.name, () => {
         },
     ]);
 
-    itCases(
-        genericItCasesOptions,
-        () => {
-            return true;
+    itCases(genericItCasesOptions, () => {
+        return true;
+    }, [
+        {
+            it: 'should pass',
+            expect: true,
         },
-        [
-            {
-                it: 'should pass',
-                expect: true,
-            },
-            {
-                it: 'should exclude this test',
-                expect: false,
-                exclude: true,
-            },
-        ],
-    );
+        {
+            it: 'should exclude this test',
+            expect: false,
+            exclude: true,
+        },
+    ]);
 
     // with readonly rest params
     itCases(

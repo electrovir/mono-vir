@@ -1,6 +1,6 @@
 import {itCases} from '@augment-vir/chai';
 import {join} from 'path';
-import {invalidPackageDirPath, virmatorDirPath} from '../../repo-file-paths.test-helpers';
+import {invalidPackageDirPath, virmatorDirPath} from '../../repo-file-paths.mock';
 import {readPackageJson} from './read-package-json';
 
 describe(readPackageJson.name, () => {

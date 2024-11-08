@@ -1,5 +1,5 @@
-import {itCases} from '@augment-vir/chai';
-import {findLongestCommonPrefix} from './string';
+import {describe, itCases} from '@augment-vir/test';
+import {findLongestCommonPrefix} from './string.js';
 
 describe(findLongestCommonPrefix.name, () => {
     itCases(findLongestCommonPrefix, [

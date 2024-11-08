@@ -15,7 +15,7 @@ export function findLongestCommonPrefix(inputStrings: ReadonlyArray<string>): st
         }
 
         for (let letterIndex = inputString.length - 1; letterIndex >= 0; letterIndex--) {
-            const prefixSoFar = inputString.substring(0, letterIndex + 1);
+            const prefixSoFar = inputString.slice(0, Math.max(0, letterIndex + 1));
 
             if (currentLongestPrefix.startsWith(prefixSoFar)) {
                 currentLongestPrefix = prefixSoFar;

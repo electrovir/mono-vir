@@ -1,5 +1,5 @@
-import {itCases} from '@augment-vir/chai';
-import {findLongestCommentPath} from './path';
+import {describe, itCases} from '@augment-vir/test';
+import {findLongestCommentPath} from './path.js';
 
 describe(findLongestCommentPath.name, () => {
     itCases(findLongestCommentPath, [

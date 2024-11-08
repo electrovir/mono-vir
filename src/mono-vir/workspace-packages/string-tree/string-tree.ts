@@ -62,7 +62,7 @@ function flattenTree(tree: ReadonlyArray<TreeNode>): string[][] {
             );
         }
 
-        allDescendants[parentValue]!.add(descendantValue);
+        allDescendants[parentValue].add(descendantValue);
     }
 
     function traverse(node: TreeNode, currentLevel: number, parents: string[]) {
@@ -86,7 +86,7 @@ function flattenTree(tree: ReadonlyArray<TreeNode>): string[][] {
             if (!matrix[level]) {
                 matrix[level] = [];
             }
-            matrix[level]!.push(value);
+            matrix[level].push(value);
         },
     );
 

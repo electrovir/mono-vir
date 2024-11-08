@@ -1,9 +1,9 @@
-import {isEnumValue} from '@augment-vir/common';
-import {resolve} from 'path';
-import {MonoVirCommandEnum} from '../mono-vir/mono-vir-commands';
-import {MonoVirInputs} from '../mono-vir/mono-vir-inputs';
-import {monoVirBinName} from '../package-names';
-import {MonoCliInputError} from './mono-cli-input.error';
+import {check} from '@augment-vir/assert';
+import {resolve} from 'node:path';
+import {MonoVirCommandEnum} from '../mono-vir/mono-vir-commands.js';
+import {MonoVirInputs} from '../mono-vir/mono-vir-inputs.js';
+import {monoVirBinName} from '../package-names.js';
+import {MonoCliInputError} from './mono-cli-input.error.js';
 
 export const noHelpFlag = '--no-help';
 
@@ -30,7 +30,7 @@ export function parseArgs(args: ReadonlyArray<string>, cliFileName: string): Mon
 
     const commandInput = commandInputs[0];
 
-    if (!isEnumValue(commandInput, MonoVirCommandEnum)) {
+    if (!check.isEnumValue(commandInput, MonoVirCommandEnum)) {
         throw new MonoCliInputError(`Unknown '${monoVirBinName}' command given: '${commandInput}'`);
     }
 

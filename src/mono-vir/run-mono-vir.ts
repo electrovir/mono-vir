@@ -1,5 +1,5 @@
-import {commands} from './mono-vir-commands';
-import {MonoVirInputs} from './mono-vir-inputs';
+import {commands} from './mono-vir-commands.js';
+import {MonoVirInputs} from './mono-vir-inputs.js';
 
 /** Entry point for mono-vir. */
 export async function runMonoVir({command, commandInputs, cwd}: MonoVirInputs) {

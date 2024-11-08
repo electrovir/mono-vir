@@ -1,4 +1,5 @@
-import {monoVirBinName, monoVirPackageName} from './package-names';
+import {monoVirBinName, monoVirPackageName} from './package-names.js';
+
 const helpMessage = `
 ${monoVirPackageName} usage:
 

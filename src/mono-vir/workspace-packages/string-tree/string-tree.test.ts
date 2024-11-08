@@ -1,5 +1,5 @@
-import {itCases} from '@augment-vir/chai';
-import {createFlattenedTree} from './string-tree';
+import {describe, itCases} from '@augment-vir/test';
+import {createFlattenedTree} from './string-tree.js';
 
 describe(createFlattenedTree.name, () => {
     itCases(createFlattenedTree, [
@@ -85,7 +85,9 @@ describe(createFlattenedTree.name, () => {
                 '@my-app/another-scripts': new Set([]),
                 '@my-app/services': new Set(['@my-app/common-universal']),
             },
-            throws: Error,
+            throws: {
+                matchConstructor: Error,
+            },
         },
         {
             it: 'fails on a circular tree',
@@ -97,7 +99,9 @@ describe(createFlattenedTree.name, () => {
                 ]),
                 fry: new Set(['child']),
             },
-            throws: Error,
+            throws: {
+                matchConstructor: Error,
+            },
         },
         {
             it: 'works with just some root nodes',

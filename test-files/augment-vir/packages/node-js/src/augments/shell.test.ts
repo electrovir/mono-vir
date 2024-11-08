@@ -6,7 +6,7 @@ import {
     longRunningFile,
     longRunningFileWithStderr,
     nodeJsPackageDir,
-} from '../repo-file-paths.test-helpers';
+} from '../repo-file-paths.mock';
 import {interpolationSafeWindowsPath, toPosixPath} from './path';
 import {runShellCommand} from './shell';
 

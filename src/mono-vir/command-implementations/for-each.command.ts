@@ -1,10 +1,10 @@
-import {awaitedForEach} from '@augment-vir/common';
-import {log, runShellCommand} from '@augment-vir/node-js';
-import {join} from 'path';
+import {awaitedForEach, log} from '@augment-vir/common';
+import {runShellCommand} from '@augment-vir/node';
+import {join} from 'node:path';
 import {ReadonlyDeep} from 'type-fest';
-import {MonoCliInputError} from '../../cli/mono-cli-input.error';
-import {CommandInputs} from '../command';
-import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packages/get-package-dependency-order';
+import {MonoCliInputError} from '../../cli/mono-cli-input.error.js';
+import {CommandInputs} from '../command.js';
+import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packages/get-package-dependency-order.js';
 
 export async function runForEachCommand({cwd, commandInputs}: ReadonlyDeep<CommandInputs>) {
     const relativePackagePathsInOrder = await getRelativePosixPackagePathsInDependencyOrder(cwd);

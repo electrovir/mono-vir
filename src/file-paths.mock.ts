@@ -1,6 +1,6 @@
-import {dirname, join} from 'path';
+import {dirname, join} from 'node:path';
 
-export const monoVirRepoRootPath = dirname(dirname(__dirname));
+export const monoVirRepoRootPath = dirname(import.meta.dirname);
 
 const testFilesDirPath = join(monoVirRepoRootPath, 'test-files');
 

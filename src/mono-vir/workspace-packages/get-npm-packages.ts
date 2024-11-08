@@ -1,4 +1,4 @@
-import {queryNpmWorkspace} from '@augment-vir/node-js';
+import {queryNpmWorkspace} from '@augment-vir/node';
 
 /** Npm package properties relevant for mono-vir functionality. */
 export type NpmPackage = {

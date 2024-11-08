@@ -8,7 +8,7 @@ import {lstat, readFile, writeFile} from 'fs/promises';
 import {describe, it} from 'mocha';
 import {tmpdir} from 'os';
 import {join} from 'path';
-import {nodeJsPackageDir, recursiveFileReadDir} from '../repo-file-paths.test-helpers';
+import {nodeJsPackageDir, recursiveFileReadDir} from '../repo-file-paths.mock';
 import {
     createSymLink,
     readDirFilesByExtension,

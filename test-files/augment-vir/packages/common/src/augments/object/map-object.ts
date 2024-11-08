@@ -15,12 +15,8 @@ export type MappedValues<EntireInputGeneric extends object, MappedValueGeneric> 
  * promises. This function also requires currying in order to get the types correct. This allows you
  * to explicitly state the return type.
  *
- * @example
- *     mapObjectValuesSync({objectToIterateOver: 'initial value'})<{objectToIterateOver: number}>(
- *         (key, value) => ({
- *             newValue: value.length,
- *         }),
- *     );
+ * @example mapObjectValuesSync({objectToIterateOver: 'initial value'})<{objectToIterateOver:
+ * number}>( (key, value) => ({ newValue: value.length, }), );
  */
 export function mapObjectValuesSync<EntireInputGeneric extends object>(
     inputObject: EntireInputGeneric,

@@ -1,4 +1,4 @@
-import {monoVirRepoRootPath} from './file-paths.test-helper';
+import {monoVirRepoRootPath} from './file-paths.mock.js';
 
 export function sanitizeTestOutput(
     originalOutput: string | number | undefined,

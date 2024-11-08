@@ -1,6 +1,6 @@
-import {itCases} from '@augment-vir/chai';
-import {testRepos} from '../../test-helpers/file-paths.test-helper';
-import {getRelativePosixPackagePathsInDependencyOrder} from './get-package-dependency-order';
+import {describe, itCases} from '@augment-vir/test';
+import {testRepos} from '../../file-paths.mock.js';
+import {getRelativePosixPackagePathsInDependencyOrder} from './get-package-dependency-order.js';
 
 describe(getRelativePosixPackagePathsInDependencyOrder.name, () => {
     itCases(getRelativePosixPackagePathsInDependencyOrder, [

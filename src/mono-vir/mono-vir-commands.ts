@@ -1,4 +1,4 @@
-import {CommandFunction} from './command';
+import {CommandFunction} from './command.js';
 
 /** All available commands for mono-vir. */
 export enum MonoVirCommandEnum {
@@ -16,12 +16,12 @@ export const commands: Record<MonoVirCommandEnum, CommandImporter> = {
      * dependency tree.
      */
     [MonoVirCommandEnum.ForEach]: async () => {
-        const importedFile = await import('./command-implementations/for-each.command');
+        const importedFile = await import('./command-implementations/for-each.command.js');
         return importedFile.runForEachCommand;
     },
     /** For each async command: executes upon every npm workspace in parallel all at once. */
     [MonoVirCommandEnum.ForEachAsync]: async () => {
-        const importedFile = await import('./command-implementations/for-each-async.command');
+        const importedFile = await import('./command-implementations/for-each-async.command.js');
         return importedFile.runForEachAsyncCommand;
     },
 };

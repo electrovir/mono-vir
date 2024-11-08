@@ -1,10 +1,10 @@
 import {ArrayElement, mapObjectValues, omitObjectKeys} from '@augment-vir/common';
-import {ShellOutput} from '@augment-vir/node-js';
+import {ShellOutput} from '@augment-vir/node';
+import {describe, snapshotCases} from '@augment-vir/test';
 import {runPackageCli} from 'test-as-package';
-import {expectationCases} from 'test-established-expectations';
-import {testRepos} from '../test-helpers/file-paths.test-helper';
-import {sanitizeTestOutput} from '../test-helpers/sanitize-output.test-helper';
-import {noHelpFlag} from './parse-cli-args';
+import {testRepos} from '../file-paths.mock.js';
+import {sanitizeTestOutput} from '../sanitize-output.mock.js';
+import {noHelpFlag} from './parse-cli-args.js';
 
 describe('cli', () => {
     const outputKeysToIgnore = [
@@ -12,7 +12,7 @@ describe('cli', () => {
         'exitSignal',
     ] as const satisfies ReadonlyArray<keyof ShellOutput>;
 
-    expectationCases(
+    snapshotCases(
         async (
             cwd: string,
             command: string,
@@ -32,9 +32,6 @@ describe('cli', () => {
                 ]),
                 (key, value) => sanitizeTestOutput(String(value)),
             );
-        },
-        {
-            testKey: 'cli',
         },
         [
             /**
