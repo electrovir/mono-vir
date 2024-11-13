@@ -18,18 +18,25 @@ describe('cli', () => {
             command: string,
             trimKeys: (keyof Omit<ShellOutput, ArrayElement<typeof outputKeysToIgnore>>)[] = [],
         ) => {
+            const finalArgs = [
+                ...command.split(' '),
+                noHelpFlag,
+            ];
             const output = await runPackageCli({
-                cwd: cwd,
-                commandArgs: [
-                    ...command.split(' '),
-                    noHelpFlag,
-                ],
+                cwd,
+                commandArgs: finalArgs,
             });
             return mapObjectValues(
-                omitObjectKeys(output, [
-                    ...outputKeysToIgnore,
-                    ...trimKeys,
-                ]),
+                omitObjectKeys(
+                    {
+                        ...output,
+                        args: finalArgs.join(' '),
+                    },
+                    [
+                        ...outputKeysToIgnore,
+                        ...trimKeys,
+                    ],
+                ),
                 (key, value) => sanitizeTestOutput(String(value)),
             );
         },
