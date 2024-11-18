@@ -1,6 +1,6 @@
 {
     "name": "mono-vir",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "description": "Super simple npm based mono-repo tooling.",
     "keywords": [
         "monorepo",
@@ -45,14 +45,14 @@
         "test:update": "npm run test update"
     },
     "dependencies": {
-        "@augment-vir/assert": "^30.8.0",
-        "@augment-vir/common": "^30.8.0",
-        "@augment-vir/node": "^30.8.0",
+        "@augment-vir/assert": "^30.8.1",
+        "@augment-vir/common": "^30.8.1",
+        "@augment-vir/node": "^30.8.1",
         "concurrently": "^9.1.0",
         "tsx": "^4.19.2"
     },
     "devDependencies": {
-        "@augment-vir/test": "^30.8.0",
+        "@augment-vir/test": "^30.8.1",
         "@eslint/eslintrc": "^3.2.0",
         "@eslint/js": "9.14.0",
         "@stylistic/eslint-plugin": "^2.10.1",
