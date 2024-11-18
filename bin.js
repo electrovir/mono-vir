@@ -5,4 +5,4 @@ import {join} from 'node:path';
 
 const cliPath = join(import.meta.dirname, 'src', 'cli', 'cli.script.ts');
 
-await runCliScript(cliPath, 'mono-vir');
+await runCliScript(cliPath, import.meta.filename, 'mono-vir');
