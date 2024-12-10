@@ -6,11 +6,11 @@ Uses npm workspaces and `package.json` dependencies to determine build order.
 
 ## Features
 
--   runs commands for each package in correct order based on each package's dependency graph
--   relies on `package.json`'s `workspaces` property: no need to duplicate this information in another config
--   [TSConfig reference paths](https://www.typescriptlang.org/docs/handbook/project-references.html) are not required
--   [TSConfig `composite` option](https://www.typescriptlang.org/tsconfig#composite) is not required
--   [TSConfig `declarationMap` option](https://www.typescriptlang.org/tsconfig#declarationMap) is not required
+- runs commands for each package in correct order based on each package's dependency graph
+- relies on `package.json`'s `workspaces` property: no need to duplicate this information in another config
+- [TSConfig reference paths](https://www.typescriptlang.org/docs/handbook/project-references.html) are not required
+- [TSConfig `composite` option](https://www.typescriptlang.org/tsconfig#composite) is not required
+- [TSConfig `declarationMap` option](https://www.typescriptlang.org/tsconfig#declarationMap) is not required
 
 ## Installation
 
@@ -26,8 +26,8 @@ Note: You must first setup [npm workspaces](https://docs.npmjs.com/cli/using-npm
 mono-vir <command> <command-inputs>
 ```
 
--   `<command>`: the `mono-vir` command you wish to run.
--   `<command-inputs>`: inputs to the `mono-vir` command in the bullet above.
+- `<command>`: the `mono-vir` command you wish to run.
+- `<command-inputs>`: inputs to the `mono-vir` command in the bullet above.
 
 ### `for-each`
 
@@ -35,11 +35,11 @@ mono-vir <command> <command-inputs>
 
 Examples:
 
--   run type checking for each workspace package:
+- run type checking for each workspace package:
     ```bash
     npx mono-vir for-each tsc --noEmit
     ```
--   run "npm start" for each workspace package:
+- run "npm start" for each workspace package:
     ```bash
     npx mono-vir for-each npm start
     ```
