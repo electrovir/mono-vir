@@ -1,5 +1,5 @@
-import {ArrayElement, mapObjectValues, omitObjectKeys} from '@augment-vir/common';
-import {ShellOutput} from '@augment-vir/node';
+import {type ArrayElement, mapObjectValues, omitObjectKeys} from '@augment-vir/common';
+import {type ShellOutput} from '@augment-vir/node';
 import {describe, snapshotCases} from '@augment-vir/test';
 import {runPackageCli} from 'test-as-package';
 import {testRepos} from '../file-paths.mock.js';
@@ -37,7 +37,7 @@ describe('cli', () => {
                         ...trimKeys,
                     ],
                 ),
-                (key, value) => sanitizeTestOutput(String(value)),
+                (key, value) => sanitizeTestOutput(value),
             );
         },
         [

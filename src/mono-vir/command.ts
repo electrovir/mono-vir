@@ -1,5 +1,5 @@
-import {TypedFunction} from '@augment-vir/common';
-import {ReadonlyDeep} from 'type-fest';
+import {type TypedFunction} from '@augment-vir/common';
+import {type ReadonlyDeep} from 'type-fest';
 
 /** The inputs for internal mono-vir commands. */
 export type CommandInputs = {

@@ -1,4 +1,4 @@
-import {MonoVirCommandEnum} from './mono-vir-commands.js';
+import {type MonoVirCommandEnum} from './mono-vir-commands.js';
 
 /** Inputs for mono-vir itself. */
 export type MonoVirInputs = {

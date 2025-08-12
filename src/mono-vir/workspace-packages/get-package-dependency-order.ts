@@ -1,7 +1,7 @@
 import {mapObjectValues} from '@augment-vir/common';
 import {toPosixPath} from '@augment-vir/node';
 import {monoVirPackageName} from '../../package-names.js';
-import {getNpmPackages, NpmPackage} from './get-npm-packages.js';
+import {getNpmPackages, type NpmPackage} from './get-npm-packages.js';
 import {createFlattenedTree} from './string-tree/string-tree.js';
 
 /**

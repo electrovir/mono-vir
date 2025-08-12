@@ -1,4 +1,4 @@
-import {CommandFunction} from './command.js';
+import {type CommandFunction} from './command.js';
 
 /** All available commands for mono-vir. */
 export enum MonoVirCommandEnum {

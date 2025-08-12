@@ -1,7 +1,7 @@
 import {check} from '@augment-vir/assert';
 import {resolve} from 'node:path';
 import {MonoVirCommandEnum} from '../mono-vir/mono-vir-commands.js';
-import {MonoVirInputs} from '../mono-vir/mono-vir-inputs.js';
+import {type MonoVirInputs} from '../mono-vir/mono-vir-inputs.js';
 import {monoVirBinName} from '../package-names.js';
 import {MonoCliInputError} from './mono-cli-input.error.js';
 
