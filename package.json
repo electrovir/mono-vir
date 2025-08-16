@@ -1,6 +1,6 @@
 {
     "name": "mono-vir",
-    "version": "2.0.6",
+    "version": "2.0.7",
     "description": "Super simple npm based mono-repo tooling.",
     "keywords": [
         "monorepo",
@@ -46,26 +46,27 @@
         "test:update": "npm run test update"
     },
     "dependencies": {
-        "@augment-vir/assert": "^31.32.2",
-        "@augment-vir/common": "^31.32.2",
-        "@augment-vir/node": "^31.32.2",
-        "concurrently": "^9.2.0",
+        "@augment-vir/assert": "^31.32.3",
+        "@augment-vir/common": "^31.32.3",
+        "@augment-vir/node": "^31.32.3",
+        "cli-vir": "^0.2.0",
+        "runstorm": "^0.3.0",
         "tsx": "^4.20.4"
     },
     "devDependencies": {
-        "@augment-vir/test": "^31.32.2",
+        "@augment-vir/test": "^31.32.3",
         "@eslint/eslintrc": "^3.3.1",
         "@eslint/js": "9.33.0",
         "@stylistic/eslint-plugin": "^5.2.3",
         "@stylistic/eslint-plugin-ts": "^4.4.1",
-        "@types/node": "^24.2.1",
+        "@types/node": "^24.3.0",
         "@typescript-eslint/eslint-plugin": "^8.39.1",
         "cspell": "^9.2.0",
         "dependency-cruiser": "^17.0.1",
-        "esbuild": "^0.25.8",
+        "esbuild": "^0.25.9",
         "eslint": "9.33.0",
         "eslint-config-prettier": "^10.1.8",
-        "eslint-plugin-jsdoc": "^53.0.1",
+        "eslint-plugin-jsdoc": "^54.1.0",
         "eslint-plugin-monorepo-cop": "^1.0.2",
         "eslint-plugin-playwright": "^2.2.2",
         "eslint-plugin-prettier": "^5.5.4",

@@ -1,8 +1,8 @@
 import {describe, itCases} from '@augment-vir/test';
-import {findLongestCommentPath} from './path.js';
+import {findLongestCommonPath} from './path.js';
 
-describe(findLongestCommentPath.name, () => {
-    itCases(findLongestCommentPath, [
+describe(findLongestCommonPath.name, () => {
+    itCases(findLongestCommonPath, [
         {
             it: 'finds common path',
             input: [

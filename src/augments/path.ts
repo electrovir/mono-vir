@@ -1,7 +1,7 @@
 import {dirname} from 'node:path';
 import {findLongestCommonPrefix} from './string.js';
 
-export function findLongestCommentPath(paths: ReadonlyArray<string>): string {
+export function findLongestCommonPath(paths: ReadonlyArray<string>): string {
     const longestCommonPrefix = findLongestCommonPrefix(paths);
 
     if (longestCommonPrefix.endsWith('/')) {

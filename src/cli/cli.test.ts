@@ -4,7 +4,6 @@ import {describe, snapshotCases} from '@augment-vir/test';
 import {runPackageCli} from 'test-as-package';
 import {testRepos} from '../file-paths.mock.js';
 import {sanitizeTestOutput} from '../sanitize-output.mock.js';
-import {noHelpFlag} from './parse-cli-args.js';
 
 describe('cli', () => {
     const outputKeysToIgnore = [
@@ -18,10 +17,7 @@ describe('cli', () => {
             command: string,
             trimKeys: (keyof Omit<ShellOutput, ArrayElement<typeof outputKeysToIgnore>>)[] = [],
         ) => {
-            const finalArgs = [
-                ...command.split(' '),
-                noHelpFlag,
-            ];
+            const finalArgs = command.split(' ');
             const output = await runPackageCli({
                 cwd,
                 commandArgs: finalArgs,
