@@ -15,11 +15,11 @@ export async function runMonoVirCli(
             importMeta,
         });
 
-        await runMonoVir({
+        const {highestExitCode} = await runMonoVir({
             ...args,
             cwd,
         });
-        process.exit(0);
+        process.exit(highestExitCode);
     } catch (error) {
         if (error instanceof MonoCliInputError) {
             log.error(extractErrorMessage(error));

@@ -6,7 +6,10 @@ import {MonoCliInputError} from '../../cli/mono-cli-input.error.js';
 import {type CommandInputs} from '../command.js';
 import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packages/get-package-dependency-order.js';
 
-export async function runForEachAsyncCommand({cwd, commandInputs}: ReadonlyDeep<CommandInputs>) {
+export async function runForEachAsyncCommand({
+    cwd,
+    commandInputs,
+}: ReadonlyDeep<CommandInputs>): Promise<ReturnType<typeof runCommands>> {
     const relativePackagePathsInOrder = await getRelativePosixPackagePathsInDependencyOrder(cwd);
 
     const shellCommand = commandInputs.join(' ');
@@ -27,9 +30,7 @@ export async function runForEachAsyncCommand({cwd, commandInputs}: ReadonlyDeep<
         },
     );
 
-    const {highestExitCode} = await runCommands(commands, {
+    return await runCommands(commands, {
         killOn: KillOn.Failure,
     });
-
-    process.exit(highestExitCode);
 }

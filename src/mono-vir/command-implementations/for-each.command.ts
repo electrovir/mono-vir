@@ -7,7 +7,10 @@ import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packag
 import {KillOn, runCommands, type Command} from 'runstorm';
 import {findLongestCommonPath} from '../../augments/path.js';
 
-export async function runForEachCommand({cwd, commandInputs}: ReadonlyDeep<CommandInputs>) {
+export async function runForEachCommand({
+    cwd,
+    commandInputs,
+}: ReadonlyDeep<CommandInputs>): Promise<ReturnType<typeof runCommands>> {
     const relativePackagePathsInOrder = await getRelativePosixPackagePathsInDependencyOrder(cwd);
 
     const shellCommand = commandInputs.join(' ');
@@ -28,10 +31,8 @@ export async function runForEachCommand({cwd, commandInputs}: ReadonlyDeep<Comma
         },
     );
 
-    const {highestExitCode} = await runCommands(commands, {
+    return await runCommands(commands, {
         killOn: KillOn.Failure,
         maxConcurrency: 1,
     });
-
-    process.exit(highestExitCode);
 }
