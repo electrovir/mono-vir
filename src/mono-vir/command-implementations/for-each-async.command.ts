@@ -1,15 +1,19 @@
 import {join} from 'node:path';
 import {KillOn, runCommands, type Command} from 'runstorm';
-import {type ReadonlyDeep} from 'type-fest';
 import {findLongestCommonPath} from '../../augments/path.js';
 import {MonoCliInputError} from '../../cli/mono-cli-input.error.js';
 import {type CommandInputs} from '../command.js';
 import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packages/get-package-dependency-order.js';
+import {runForEachCommand} from './for-each.command.js';
 
 export async function runForEachAsyncCommand({
     cwd,
     commandInputs,
-}: ReadonlyDeep<CommandInputs>): Promise<ReturnType<typeof runCommands>> {
+    maxConcurrency,
+}: Readonly<CommandInputs>): Promise<ReturnType<typeof runCommands>> {
+    if (maxConcurrency === 1) {
+        return await runForEachCommand({cwd, commandInputs});
+    }
     const relativePackagePathsInOrder = await getRelativePosixPackagePathsInDependencyOrder(cwd);
 
     const shellCommand = commandInputs.join(' ');
@@ -32,5 +36,6 @@ export async function runForEachAsyncCommand({
 
     return await runCommands(commands, {
         killOn: KillOn.Failure,
+        maxConcurrency,
     });
 }

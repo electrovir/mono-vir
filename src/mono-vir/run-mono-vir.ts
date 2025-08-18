@@ -20,8 +20,13 @@ export async function runMonoVir({
     command,
     commandInputs,
     cwd,
+    maxConcurrency,
 }: Readonly<MonoVirParams>): Promise<ReturnType<typeof runCommands>> {
     const commandToRun = await commands[command]();
 
-    return await commandToRun({cwd, commandInputs});
+    return await commandToRun({
+        cwd,
+        commandInputs,
+        maxConcurrency: maxConcurrency || undefined,
+    });
 }

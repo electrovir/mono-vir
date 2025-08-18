@@ -1,5 +1,4 @@
 import {join} from 'node:path';
-import {type ReadonlyDeep} from 'type-fest';
 import {MonoCliInputError} from '../../cli/mono-cli-input.error.js';
 import {type CommandInputs} from '../command.js';
 import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packages/get-package-dependency-order.js';
@@ -10,7 +9,7 @@ import {findLongestCommonPath} from '../../augments/path.js';
 export async function runForEachCommand({
     cwd,
     commandInputs,
-}: ReadonlyDeep<CommandInputs>): Promise<ReturnType<typeof runCommands>> {
+}: Readonly<Omit<CommandInputs, 'maxConcurrency'>>): Promise<ReturnType<typeof runCommands>> {
     const relativePackagePathsInOrder = await getRelativePosixPackagePathsInDependencyOrder(cwd);
 
     const shellCommand = commandInputs.join(' ');
