@@ -1,8 +1,8 @@
 import {describe, itCases} from '@augment-vir/test';
-import {createFlattenedTree} from './string-tree.js';
+import {createDependencyTree} from './string-tree.js';
 
-describe(createFlattenedTree.name, () => {
-    itCases(createFlattenedTree, [
+describe(createDependencyTree.name, () => {
+    itCases(createDependencyTree, [
         {
             it: 'creates a flattened tree from a valid dep set',
             input: {

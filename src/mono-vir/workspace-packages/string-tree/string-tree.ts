@@ -93,7 +93,12 @@ function flattenTree(tree: ReadonlyArray<TreeNode>): string[][] {
     return matrix;
 }
 
-export function createFlattenedTree(deps: Record<string, Set<string>>): string[][] {
+/**
+ * Creates a flattened tree of the given dependencies.
+ *
+ * @category Internal
+ */
+export function createDependencyTree(deps: Record<string, Set<string>>): string[][] {
     const tree = createTree(deps);
     const flattenedTree = flattenTree(tree);
     const totallyFlatTree = flattenedTree.flat();

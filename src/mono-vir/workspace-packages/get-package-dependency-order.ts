@@ -2,15 +2,17 @@ import {mapObjectValues} from '@augment-vir/common';
 import {toPosixPath} from '@augment-vir/node';
 import {monoVirPackageName} from '../../package-names.js';
 import {getNpmPackages, type NpmPackage} from './get-npm-packages.js';
-import {createFlattenedTree} from './string-tree/string-tree.js';
+import {createDependencyTree} from './string-tree/string-tree.js';
 
 /**
- * Get a list of npm mono-repo packages (workspaces) in order based on how they depend on each
- * other.
+ * Gets a list of non-flattened posix paths for each npm mono-repo package (workspace) in order
+ * based on how they depend on each other.
+ *
+ * @category Internal
  */
-export async function getRelativePosixPackagePathsInDependencyOrder(
+export async function getRelativePosixPackagePathTreeInDependencyOrder(
     cwd: string,
-): Promise<string[]> {
+): Promise<string[][]> {
     const npmPackagesArray = await getNpmPackages(cwd);
     const npmPackagesByName: Readonly<Record<string, NpmPackage>> = Object.fromEntries(
         npmPackagesArray.map((npmPackage): [string, NpmPackage] => {
@@ -31,16 +33,18 @@ export async function getRelativePosixPackagePathsInDependencyOrder(
         },
     );
 
-    const flattenedDeps = createFlattenedTree(npmDepsByPackageName).flat();
+    const depsTree = createDependencyTree(npmDepsByPackageName);
 
-    const depsByDirName = flattenedDeps.map((npmName) => {
-        const npmPackage = npmPackagesByName[npmName];
+    const depsByDirName = depsTree.map((layer) => {
+        return layer.map((npmName) => {
+            const npmPackage = npmPackagesByName[npmName];
 
-        if (!npmPackage) {
-            throw new Error(`Failed to find package by name '${npmName}'`);
-        }
+            if (!npmPackage) {
+                throw new Error(`Failed to find package by name '${npmName}'`);
+            }
 
-        return toPosixPath(npmPackage.dirRelativePath);
+            return toPosixPath(npmPackage.dirRelativePath);
+        });
     });
 
     if (!depsByDirName.length) {
@@ -50,4 +54,16 @@ export async function getRelativePosixPackagePathsInDependencyOrder(
     }
 
     return depsByDirName;
+}
+
+/**
+ * Gets a list of flattened posix paths for each npm mono-repo package (workspace) in order based on
+ * how they depend on each other.
+ *
+ * @category Internal
+ */
+export async function getRelativePosixPackagePathsInDependencyOrder(
+    cwd: string,
+): Promise<string[]> {
+    return (await getRelativePosixPackagePathTreeInDependencyOrder(cwd)).flat();
 }

@@ -6,6 +6,11 @@ import {type CommandInputs} from '../command.js';
 import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packages/get-package-dependency-order.js';
 import {runForEachCommand} from './for-each.command.js';
 
+/**
+ * Run the command for each package in parallel.
+ *
+ * @category Internal
+ */
 export async function runForEachAsyncCommand({
     cwd,
     commandInputs,

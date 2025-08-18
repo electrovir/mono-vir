@@ -1,11 +1,15 @@
 import {join} from 'node:path';
+import {KillOn, runCommands, type Command} from 'runstorm';
+import {findLongestCommonPath} from '../../augments/path.js';
 import {MonoCliInputError} from '../../cli/mono-cli-input.error.js';
 import {type CommandInputs} from '../command.js';
 import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packages/get-package-dependency-order.js';
 
-import {KillOn, runCommands, type Command} from 'runstorm';
-import {findLongestCommonPath} from '../../augments/path.js';
-
+/**
+ * Run the command for each package in sequential, dependency order.
+ *
+ * @category Internal
+ */
 export async function runForEachCommand({
     cwd,
     commandInputs,

@@ -4,6 +4,7 @@ import {type CommandFunction} from './command.js';
 export enum MonoVirCommand {
     ForEach = 'for-each',
     ForEachAsync = 'for-each-async',
+    ForEachTree = 'for-each-tree',
 }
 
 /** Imports the command function so that only the needed files are imported at run-time. */
@@ -15,13 +16,21 @@ export const commands: Record<MonoVirCommand, CommandImporter> = {
      * For each command: executes upon every npm workspace in sequential order based on their
      * dependency tree.
      */
-    [MonoVirCommand.ForEach]: async () => {
+    async [MonoVirCommand.ForEach]() {
         const importedFile = await import('./command-implementations/for-each.command.js');
         return importedFile.runForEachCommand;
     },
     /** For each async command: executes upon every npm workspace in parallel all at once. */
-    [MonoVirCommand.ForEachAsync]: async () => {
+    async [MonoVirCommand.ForEachAsync]() {
         const importedFile = await import('./command-implementations/for-each-async.command.js');
         return importedFile.runForEachAsyncCommand;
+    },
+    /**
+     * For each tree command: executes upon every npm workspace in dependency order, with
+     * non-dependent workspaces running in parallel.
+     */
+    async [MonoVirCommand.ForEachTree]() {
+        const importedFile = await import('./command-implementations/for-each-tree.command.js');
+        return importedFile.runForEachTreeCommand;
     },
 };
