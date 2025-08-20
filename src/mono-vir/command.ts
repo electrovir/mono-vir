@@ -17,7 +17,11 @@ export type CommandInputs = {
  *
  * @category Internal
  */
-export type CommandFunction = TypedFunction<
-    Readonly<CommandInputs>,
-    Promise<ReturnType<typeof runCommands>>
->;
+export type CommandFunction = TypedFunction<Readonly<CommandInputs>, Promise<CommandOutput>>;
+
+/**
+ * Output of all commands.
+ *
+ * @category Internal
+ */
+export type CommandOutput = Omit<Awaited<ReturnType<typeof runCommands>>, 'terminated'>;

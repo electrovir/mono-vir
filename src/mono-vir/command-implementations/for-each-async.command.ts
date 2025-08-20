@@ -2,7 +2,7 @@ import {join} from 'node:path';
 import {KillOn, runCommands, type Command} from 'runstorm';
 import {findLongestCommonPath} from '../../augments/path.js';
 import {MonoCliInputError} from '../../cli/mono-cli-input.error.js';
-import {type CommandInputs} from '../command.js';
+import {type CommandInputs, type CommandOutput} from '../command.js';
 import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packages/get-package-dependency-order.js';
 import {runForEachCommand} from './for-each.command.js';
 
@@ -15,7 +15,7 @@ export async function runForEachAsyncCommand({
     cwd,
     commandInputs,
     maxConcurrency,
-}: Readonly<CommandInputs>): Promise<ReturnType<typeof runCommands>> {
+}: Readonly<CommandInputs>): Promise<CommandOutput> {
     if (maxConcurrency === 1) {
         return await runForEachCommand({cwd, commandInputs});
     }

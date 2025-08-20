@@ -1,4 +1,4 @@
-import {type runCommands} from 'runstorm';
+import {type CommandOutput} from './command.js';
 import {commands} from './mono-vir-commands.js';
 import {type MonoVirArgs} from './mono-vir-inputs.js';
 
@@ -21,7 +21,7 @@ export async function runMonoVir({
     commandInputs,
     cwd,
     maxConcurrency,
-}: Readonly<MonoVirParams>): Promise<ReturnType<typeof runCommands>> {
+}: Readonly<MonoVirParams>): Promise<CommandOutput> {
     const commandToRun = await commands[command]();
 
     return await commandToRun({

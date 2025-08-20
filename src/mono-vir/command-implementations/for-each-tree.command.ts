@@ -1,9 +1,9 @@
 import {awaitedBlockingMap} from '@augment-vir/common';
 import {join} from 'node:path';
-import {KillOn, runCommands, type Command, type Exits} from 'runstorm';
+import {KillOn, runCommands, type Command, type Exit} from 'runstorm';
 import {findLongestCommonPath} from '../../augments/path.js';
 import {MonoCliInputError} from '../../cli/mono-cli-input.error.js';
-import {type CommandInputs} from '../command.js';
+import {type CommandInputs, type CommandOutput} from '../command.js';
 import {getRelativePosixPackagePathTreeInDependencyOrder} from '../workspace-packages/get-package-dependency-order.js';
 import {runForEachCommand} from './for-each.command.js';
 
@@ -17,7 +17,7 @@ export async function runForEachTreeCommand({
     cwd,
     commandInputs,
     maxConcurrency,
-}: Readonly<CommandInputs>): Promise<ReturnType<typeof runCommands>> {
+}: Readonly<CommandInputs>): Promise<CommandOutput> {
     if (maxConcurrency === 1) {
         return await runForEachCommand({cwd, commandInputs});
     }
@@ -41,7 +41,7 @@ export async function runForEachTreeCommand({
         });
     });
 
-    const exitCodes: Exits = [];
+    const exitCodes: Exit[] = [];
     let highestExitCode = 0;
 
     await awaitedBlockingMap(commandLayers, async (commandLayer) => {

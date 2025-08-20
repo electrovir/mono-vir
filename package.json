@@ -1,6 +1,6 @@
 {
     "name": "mono-vir",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "description": "Super simple npm based mono-repo tooling.",
     "keywords": [
         "monorepo",
@@ -50,7 +50,7 @@
         "@augment-vir/common": "^31.32.3",
         "@augment-vir/node": "^31.32.3",
         "cli-vir": "^0.2.0",
-        "runstorm": "^0.3.0",
+        "runstorm": "^0.6.1",
         "tsx": "^4.20.4"
     },
     "devDependencies": {
@@ -60,13 +60,13 @@
         "@stylistic/eslint-plugin": "^5.2.3",
         "@stylistic/eslint-plugin-ts": "^4.4.1",
         "@types/node": "^24.3.0",
-        "@typescript-eslint/eslint-plugin": "^8.39.1",
+        "@typescript-eslint/eslint-plugin": "^8.40.0",
         "cspell": "^9.2.0",
         "dependency-cruiser": "^17.0.1",
         "esbuild": "^0.25.9",
         "eslint": "9.33.0",
         "eslint-config-prettier": "^10.1.8",
-        "eslint-plugin-jsdoc": "^54.1.0",
+        "eslint-plugin-jsdoc": "^54.1.1",
         "eslint-plugin-monorepo-cop": "^1.0.2",
         "eslint-plugin-playwright": "^2.2.2",
         "eslint-plugin-prettier": "^5.5.4",
@@ -87,7 +87,7 @@
         "type-fest": "^4.41.0",
         "typedoc": "^0.28.10",
         "typescript": "^5.9.2",
-        "typescript-eslint": "^8.39.1",
+        "typescript-eslint": "^8.40.0",
         "virmator": "^13.16.2"
     },
     "engines": {
