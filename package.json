@@ -1,6 +1,6 @@
 {
     "name": "mono-vir",
-    "version": "2.2.1",
+    "version": "2.2.2",
     "description": "Super simple npm based mono-repo tooling.",
     "keywords": [
         "monorepo",
@@ -37,7 +37,7 @@
         "lint": "virmator lint fix",
         "publish": "virmator publish npm run test:all",
         "test": "cd test-files/augment-vir && npm i && cd ../nested-workspaces && npm i && cd ../../ && npm run compile && test-as-package virmator test node",
-        "test:all": "npm run compile && concurrently --colors --kill-others-on-fail -c auto --names tests,spelling,format,docs,deps,lint \"npm run test\" \"npm run test:spelling\" \"npm run test:format\" \"npm run test:docs\" \"npm run test:deps\" \"npm run test:lint\"",
+        "test:all": "npm run compile && runstorm --names tests,spelling,format,docs,deps,lint \"npm run test\" \"npm run test:spelling\" \"npm run test:format\" \"npm run test:docs\" \"npm run test:deps\" \"npm run test:lint\"",
         "test:deps": "virmator deps check",
         "test:docs": "virmator docs check",
         "test:format": "virmator format check",
@@ -46,15 +46,15 @@
         "test:update": "npm run test update"
     },
     "dependencies": {
-        "@augment-vir/assert": "^31.32.3",
-        "@augment-vir/common": "^31.32.3",
-        "@augment-vir/node": "^31.32.3",
+        "@augment-vir/assert": "^31.33.0",
+        "@augment-vir/common": "^31.33.0",
+        "@augment-vir/node": "^31.33.0",
         "cli-vir": "^0.2.0",
         "runstorm": "^0.6.1",
         "tsx": "^4.20.4"
     },
     "devDependencies": {
-        "@augment-vir/test": "^31.32.3",
+        "@augment-vir/test": "^31.33.0",
         "@eslint/eslintrc": "^3.3.1",
         "@eslint/js": "9.33.0",
         "@stylistic/eslint-plugin": "^5.2.3",
@@ -88,7 +88,7 @@
         "typedoc": "^0.28.10",
         "typescript": "^5.9.2",
         "typescript-eslint": "^8.40.0",
-        "virmator": "^13.16.2"
+        "virmator": "^14.0.1"
     },
     "engines": {
         "node": ">=22"
