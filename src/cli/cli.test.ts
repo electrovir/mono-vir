@@ -1,14 +1,8 @@
-import {type ShellOutput} from '@augment-vir/node';
 import {describe, itCases} from '@augment-vir/test';
 import {runPackageCli} from 'test-as-package';
 import {testRepos} from '../file-paths.mock.js';
 
 describe('cli', () => {
-    const outputKeysToIgnore = [
-        'error',
-        'exitSignal',
-    ] as const satisfies ReadonlyArray<keyof ShellOutput>;
-
     itCases(
         async (cwd: string, command: string) => {
             const finalArgs = command.split(' ');
@@ -31,6 +25,14 @@ describe('cli', () => {
                 inputs: [
                     testRepos['augment-vir'],
                     'for-each npm run --silent mono-vir-test:success',
+                ],
+                expect: 0,
+            },
+            {
+                it: 'for-each: runs with exclude',
+                inputs: [
+                    testRepos['augment-vir'],
+                    'for-each npm run --silent mono-vir-test:success --exclude @augment-vir/common',
                 ],
                 expect: 0,
             },
@@ -70,6 +72,14 @@ describe('cli', () => {
                 inputs: [
                     testRepos['augment-vir'],
                     'for-each-async npm run --silent mono-vir-test:success',
+                ],
+                expect: 0,
+            },
+            {
+                it: 'for-each-async: excludes',
+                inputs: [
+                    testRepos['augment-vir'],
+                    'for-each-async npm run --silent mono-vir-test:success --exclude @augment-vir/common',
                 ],
                 expect: 0,
             },

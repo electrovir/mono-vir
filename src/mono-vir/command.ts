@@ -10,6 +10,7 @@ export type CommandInputs = {
     cwd: string;
     commandInputs: string[];
     maxConcurrency: number | undefined;
+    exclude: string[];
 };
 
 /**

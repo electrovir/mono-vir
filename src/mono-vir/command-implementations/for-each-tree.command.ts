@@ -17,11 +17,15 @@ export async function runForEachTreeCommand({
     cwd,
     commandInputs,
     maxConcurrency,
+    exclude,
 }: Readonly<CommandInputs>): Promise<CommandOutput> {
     if (maxConcurrency === 1) {
-        return await runForEachCommand({cwd, commandInputs});
+        return await runForEachCommand({cwd, commandInputs, exclude});
     }
-    const relativePackagePathsInOrder = await getRelativePosixPackagePathTreeInDependencyOrder(cwd);
+    const relativePackagePathsInOrder = await getRelativePosixPackagePathTreeInDependencyOrder(
+        cwd,
+        exclude,
+    );
 
     const shellCommand = commandInputs.join(' ');
 

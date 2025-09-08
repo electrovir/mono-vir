@@ -1,4 +1,4 @@
-import {mapObjectValues} from '@augment-vir/common';
+import {filterMap, mapObjectValues} from '@augment-vir/common';
 import {toPosixPath} from '@augment-vir/node';
 import {monoVirPackageName} from '../../package-names.js';
 import {getNpmPackages, type NpmPackage} from './get-npm-packages.js';
@@ -12,15 +12,20 @@ import {createDependencyTree} from './string-tree/string-tree.js';
  */
 export async function getRelativePosixPackagePathTreeInDependencyOrder(
     cwd: string,
+    exclude: string[] = [],
 ): Promise<string[][]> {
     const npmPackagesArray = await getNpmPackages(cwd);
     const npmPackagesByName: Readonly<Record<string, NpmPackage>> = Object.fromEntries(
-        npmPackagesArray.map((npmPackage): [string, NpmPackage] => {
-            return [
-                npmPackage.npmName,
-                npmPackage,
-            ];
-        }),
+        filterMap(
+            npmPackagesArray,
+            (npmPackage): [string, NpmPackage] => {
+                return [
+                    npmPackage.npmName,
+                    npmPackage,
+                ];
+            },
+            ([packageName]) => !exclude.includes(packageName),
+        ),
     );
     const npmDepsByPackageName: Readonly<Record<string, Set<string>>> = mapObjectValues(
         npmPackagesByName,
@@ -64,6 +69,7 @@ export async function getRelativePosixPackagePathTreeInDependencyOrder(
  */
 export async function getRelativePosixPackagePathsInDependencyOrder(
     cwd: string,
+    exclude: string[] = [],
 ): Promise<string[]> {
-    return (await getRelativePosixPackagePathTreeInDependencyOrder(cwd)).flat();
+    return (await getRelativePosixPackagePathTreeInDependencyOrder(cwd, exclude)).flat();
 }

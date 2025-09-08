@@ -6,7 +6,7 @@ describe(getRelativePosixPackagePathsInDependencyOrder.name, () => {
     itCases(getRelativePosixPackagePathsInDependencyOrder, [
         {
             it: 'reports the ts projects in correct order',
-            input: testRepos['augment-vir'],
+            inputs: [testRepos['augment-vir']],
             expect: [
                 'packages/common',
                 'packages/testing',

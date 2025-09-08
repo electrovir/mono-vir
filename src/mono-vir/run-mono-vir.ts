@@ -21,6 +21,7 @@ export async function runMonoVir({
     commandInputs,
     cwd,
     maxConcurrency,
+    exclude,
 }: Readonly<MonoVirParams>): Promise<CommandOutput> {
     const commandToRun = await commands[command]();
 
@@ -28,5 +29,6 @@ export async function runMonoVir({
         cwd,
         commandInputs,
         maxConcurrency: maxConcurrency || undefined,
+        exclude,
     });
 }

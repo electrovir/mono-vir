@@ -13,8 +13,12 @@ import {getRelativePosixPackagePathsInDependencyOrder} from '../workspace-packag
 export async function runForEachCommand({
     cwd,
     commandInputs,
+    exclude,
 }: Readonly<Omit<CommandInputs, 'maxConcurrency'>>): Promise<CommandOutput> {
-    const relativePackagePathsInOrder = await getRelativePosixPackagePathsInDependencyOrder(cwd);
+    const relativePackagePathsInOrder = await getRelativePosixPackagePathsInDependencyOrder(
+        cwd,
+        exclude,
+    );
 
     const shellCommand = commandInputs.join(' ');
 

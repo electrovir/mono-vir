@@ -29,6 +29,13 @@ export const monoVirArgDefinitions = {
             disableFlags: true,
         },
     },
+    exclude: {
+        description: 'Exclude a package. Can be used multiple times to exclude multiple packages.',
+        flag: {
+            allowMultiple: true,
+            valueRequirement: FlagRequirement.Required,
+        },
+    },
 } as const satisfies ArgDefinitions;
 
 /**
