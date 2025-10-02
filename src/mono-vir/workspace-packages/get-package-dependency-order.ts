@@ -1,8 +1,7 @@
-import {filterMap, mapObjectValues} from '@augment-vir/common';
 import {toPosixPath} from '@augment-vir/node';
 import {monoVirPackageName} from '../../package-names.js';
-import {getNpmPackages, type NpmPackage} from './get-npm-packages.js';
-import {createDependencyTree} from './string-tree/string-tree.js';
+import {createPackageTree} from './package-tree.js';
+import {flattenTree} from './string-tree/string-tree.js';
 
 /**
  * Gets a list of non-flattened posix paths for each npm mono-repo package (workspace) in order
@@ -14,35 +13,12 @@ export async function getRelativePosixPackagePathTreeInDependencyOrder(
     cwd: string,
     exclude: string[] = [],
 ): Promise<string[][]> {
-    const npmPackagesArray = await getNpmPackages(cwd);
-    const npmPackagesByName: Readonly<Record<string, NpmPackage>> = Object.fromEntries(
-        filterMap(
-            npmPackagesArray,
-            (npmPackage): [string, NpmPackage] => {
-                return [
-                    npmPackage.npmName,
-                    npmPackage,
-                ];
-            },
-            ([packageName]) => !exclude.includes(packageName),
-        ),
-    );
-    const npmDepsByPackageName: Readonly<Record<string, Set<string>>> = mapObjectValues(
-        npmPackagesByName,
-        (npmPackageName, npmPackage) => {
-            const relevantDeps = npmPackage.allDeps.filter(
-                (depName) => depName in npmPackagesByName,
-            );
-
-            return new Set<string>(relevantDeps);
-        },
-    );
-
-    const depsTree = createDependencyTree(npmDepsByPackageName);
+    const {packagesByName, packagesTree} = await createPackageTree(cwd, exclude);
+    const depsTree = flattenTree(packagesTree);
 
     const depsByDirName = depsTree.map((layer) => {
         return layer.map((npmName) => {
-            const npmPackage = npmPackagesByName[npmName];
+            const npmPackage = packagesByName[npmName];
 
             if (!npmPackage) {
                 throw new Error(`Failed to find package by name '${npmName}'`);

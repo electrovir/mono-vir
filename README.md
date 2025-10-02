@@ -46,7 +46,15 @@ Examples:
 
 ### `for-each-async`
 
-`for-each-async` is exactly the same as `for-each` but it runs the command for each package in parallel.
+`for-each-async` is the same as `for-each` but it runs the command for each package in parallel.
+
+### `for-each-tree`
+
+`for-each-tree` is the same as `for-each` but it runs the commands in dependency order with non-dependent packages running in parallel.
+
+### `print`
+
+`print` dumps the mono-repo's dependency graph to an SVG file. Accepts no command inputs.
 
 ## Full Example
 

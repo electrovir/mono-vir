@@ -4,6 +4,7 @@ module.exports = {
     ...baseConfig,
     ignorePaths: [
         ...baseConfig.ignorePaths,
+        'test-files/graph.svg',
     ],
     words: [
         ...baseConfig.words,

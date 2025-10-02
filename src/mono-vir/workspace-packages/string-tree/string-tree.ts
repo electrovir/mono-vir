@@ -1,4 +1,5 @@
-type TreeNode = {
+/** @category Internal */
+export type TreeNode = {
     value: string;
     // descendants
     dependents: TreeNode[];
@@ -6,7 +7,8 @@ type TreeNode = {
     dependencies: TreeNode[];
 };
 
-function createTree(deps: Record<string, Set<string>>): TreeNode[] {
+/** @category Internal */
+export function createTree(deps: Record<string, Set<string>>): TreeNode[] {
     const nodesByValue: Record<string, TreeNode> = {};
 
     function getNode(value: string): TreeNode {
@@ -42,7 +44,8 @@ function createTree(deps: Record<string, Set<string>>): TreeNode[] {
     return Object.values(nodesByValue);
 }
 
-function flattenTree(tree: ReadonlyArray<TreeNode>): string[][] {
+/** @category Internal */
+export function flattenTree(tree: ReadonlyArray<TreeNode>): string[][] {
     const levelsByValue: Record<string, number> = {};
 
     /**
@@ -91,21 +94,4 @@ function flattenTree(tree: ReadonlyArray<TreeNode>): string[][] {
     );
 
     return matrix;
-}
-
-/**
- * Creates a flattened tree of the given dependencies.
- *
- * @category Internal
- */
-export function createDependencyTree(deps: Record<string, Set<string>>): string[][] {
-    const tree = createTree(deps);
-    const flattenedTree = flattenTree(tree);
-    const totallyFlatTree = flattenedTree.flat();
-    const missingDeps = Object.keys(deps).filter((key) => !totallyFlatTree.includes(key));
-    if (missingDeps.length) {
-        throw new Error(`Missing deps from generated tree: ${missingDeps.join(',')}`);
-    }
-
-    return flattenedTree;
 }

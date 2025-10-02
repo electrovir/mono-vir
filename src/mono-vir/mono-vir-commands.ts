@@ -5,6 +5,7 @@ export enum MonoVirCommand {
     ForEach = 'for-each',
     ForEachAsync = 'for-each-async',
     ForEachTree = 'for-each-tree',
+    Print = 'print',
 }
 
 /** Imports the command function so that only the needed files are imported at run-time. */
@@ -32,5 +33,9 @@ export const commands: Record<MonoVirCommand, CommandImporter> = {
     async [MonoVirCommand.ForEachTree]() {
         const importedFile = await import('./command-implementations/for-each-tree.command.js');
         return importedFile.runForEachTreeCommand;
+    },
+    async [MonoVirCommand.Print]() {
+        const importedFile = await import('./command-implementations/print.command.js');
+        return importedFile.runPrintCommand;
     },
 };
