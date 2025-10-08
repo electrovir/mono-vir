@@ -41,7 +41,11 @@ export function createTree(deps: Record<string, Set<string>>): TreeNode[] {
         },
     );
 
-    return Object.values(nodesByValue);
+    const tree = Object.values(nodesByValue);
+    /** Verify the tree. */
+    flattenTree(tree);
+
+    return tree;
 }
 
 /** @category Internal */
@@ -60,15 +64,20 @@ export function flattenTree(tree: ReadonlyArray<TreeNode>): string[][] {
         }
 
         if (descendantValue === parentValue) {
-            throw new Error(
-                `Circular project dependency detected: '${parentValue}' depends on itself.`,
-            );
+            throw new Error(`Circular dependency detected: '${parentValue}' depends on itself.`);
         }
 
         allDescendants[parentValue].add(descendantValue);
     }
 
     function traverse(node: TreeNode, currentLevel: number, parents: string[]) {
+        if (parents.includes(node.value)) {
+            const circularDepPath = [
+                ...parents.slice(parents.indexOf(node.value)),
+                node.value,
+            ].join(' -> ');
+            throw new Error(`Circular dependency detected: ${circularDepPath}`);
+        }
         parents.forEach((parent) => addDescendant(parent, node.value));
 
         levelsByValue[node.value] = Math.max(levelsByValue[node.value] ?? 0, currentLevel);

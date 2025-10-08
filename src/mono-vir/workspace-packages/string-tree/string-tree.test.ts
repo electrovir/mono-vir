@@ -1,7 +1,8 @@
-import {describe, itCases} from '@augment-vir/test';
+import {assert} from '@augment-vir/assert';
+import {describe, it, itCases} from '@augment-vir/test';
 import {createTree, flattenTree} from './string-tree.js';
 
-describe('string tree', () => {
+describe(flattenTree.name, () => {
     function testStringTree(deps: Record<string, Set<string>>) {
         return flattenTree(createTree(deps));
     }
@@ -91,6 +92,8 @@ describe('string tree', () => {
             },
             throws: {
                 matchConstructor: Error,
+                matchMessage:
+                    'Circular dependency detected: @my-app/app-backend -> @my-app/common-universal -> @my-app/app-backend',
             },
         },
         {
@@ -154,4 +157,29 @@ describe('string tree', () => {
             ],
         },
     ]);
+});
+
+describe(createTree.name, () => {
+    it('detects a circular dependency', () => {
+        assert.throws(
+            () => {
+                createTree({
+                    '@my-app/app-backend': new Set(['@my-app/common-universal']),
+                    '@my-app/app-frontend': new Set([]),
+                    '@my-app/another-another-frontend': new Set([]),
+                    '@my-app/common-backend': new Set([]),
+                    '@my-app/common-universal': new Set(['@my-app/app-backend']),
+                    '@my-app/another-backend': new Set(['@my-app/another-common']),
+                    '@my-app/another-common': new Set([]),
+                    '@my-app/another-frontend': new Set([]),
+                    '@my-app/another-scripts': new Set([]),
+                    '@my-app/services': new Set(['@my-app/common-universal']),
+                });
+            },
+            {
+                matchMessage:
+                    'Circular dependency detected: @my-app/app-backend -> @my-app/common-universal -> @my-app/app-backend',
+            },
+        );
+    });
 });
