@@ -1,5 +1,5 @@
 import {join} from 'node:path';
-import {KillOn, runCommands, type Command} from 'runstorm';
+import {runCommands, type Command} from 'runstorm';
 import {findLongestCommonPath} from '../../augments/path.js';
 import {MonoCliInputError} from '../../cli/mono-cli-input.error.js';
 import {type CommandInputs, type CommandOutput} from '../command.js';
@@ -44,7 +44,6 @@ export async function runForEachAsyncCommand({
     );
 
     return await runCommands(commands, {
-        killOn: KillOn.Failure,
         maxConcurrency,
     });
 }
