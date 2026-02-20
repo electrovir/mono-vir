@@ -25,6 +25,24 @@ describe(createPackageTree.name, () => {
                     'typescript',
                     '@augment-vir/common',
                 ],
+                depsByType: {
+                    dependencies: [
+                        '@augment-vir/common',
+                    ],
+                    devDependencies: [
+                        '@augment-vir/browser-testing',
+                        '@open-wc/testing',
+                        '@types/mocha',
+                        '@web/dev-server-esbuild',
+                        '@web/test-runner',
+                        '@web/test-runner-commands',
+                        '@web/test-runner-playwright',
+                        '@web/test-runner-visual-regression',
+                        'element-vir',
+                        'istanbul-smart-text-reporter',
+                        'typescript',
+                    ],
+                },
                 dirRelativePath: 'packages/browser',
                 npmName: '@augment-vir/browser',
             },
@@ -43,6 +61,24 @@ describe(createPackageTree.name, () => {
                     '@web/test-runner-commands',
                     'type-fest',
                 ],
+                depsByType: {
+                    dependencies: [
+                        '@augment-vir/common',
+                        '@augment-vir/testing',
+                        '@open-wc/testing',
+                        '@types/mocha',
+                        '@web/test-runner-commands',
+                        'type-fest',
+                    ],
+                    devDependencies: [
+                        '@web/dev-server-esbuild',
+                        '@web/test-runner',
+                        '@web/test-runner-playwright',
+                        '@web/test-runner-visual-regression',
+                        'istanbul-smart-text-reporter',
+                        'typescript',
+                    ],
+                },
                 dirRelativePath: 'packages/browser-testing',
                 npmName: '@augment-vir/browser-testing',
             },
@@ -57,6 +93,20 @@ describe(createPackageTree.name, () => {
                     'test-established-expectations',
                     'type-fest',
                 ],
+                depsByType: {
+                    dependencies: [
+                        '@augment-vir/common',
+                        '@augment-vir/testing',
+                        '@types/chai-as-promised',
+                        'chai-as-promised',
+                        'expect-type',
+                        'test-established-expectations',
+                        'type-fest',
+                    ],
+                    devDependencies: [
+                        'typescript',
+                    ],
+                },
                 dirRelativePath: 'packages/chai',
                 npmName: '@augment-vir/chai',
             },
@@ -65,6 +115,14 @@ describe(createPackageTree.name, () => {
                     'typescript',
                     'type-fest',
                 ],
+                depsByType: {
+                    dependencies: [
+                        'type-fest',
+                    ],
+                    devDependencies: [
+                        'typescript',
+                    ],
+                },
                 dirRelativePath: 'packages/common',
                 npmName: '@augment-vir/common',
             },
@@ -85,6 +143,24 @@ describe(createPackageTree.name, () => {
                     'type-fest',
                     'typescript',
                 ],
+                depsByType: {
+                    devDependencies: [
+                        '@augment-vir/chai',
+                        '@augment-vir/node-js',
+                        '@electrovir/nyc',
+                        '@istanbuljs/nyc-config-typescript',
+                        '@types/chai',
+                        '@types/mocha',
+                        'chai',
+                        'expect-type',
+                        'istanbul-smart-text-reporter',
+                        'mocha',
+                        'mocha-spec-reporter-with-file-names',
+                        'ts-node',
+                        'type-fest',
+                        'typescript',
+                    ],
+                },
                 dirRelativePath: 'packages/common-tests',
                 npmName: '@augment-vir/common-tests',
             },
@@ -94,6 +170,15 @@ describe(createPackageTree.name, () => {
                     '@augment-vir/common',
                     '@augment-vir/node-js',
                 ],
+                depsByType: {
+                    dependencies: [
+                        '@augment-vir/common',
+                        '@augment-vir/node-js',
+                    ],
+                    devDependencies: [
+                        'typescript',
+                    ],
+                },
                 dirRelativePath: 'packages/docker',
                 npmName: '@augment-vir/docker',
             },
@@ -112,6 +197,26 @@ describe(createPackageTree.name, () => {
                     '@augment-vir/common',
                     'element-vir',
                 ],
+                depsByType: {
+                    dependencies: [
+                        '@augment-vir/common',
+                    ],
+                    devDependencies: [
+                        '@augment-vir/browser-testing',
+                        '@open-wc/testing',
+                        '@types/mocha',
+                        '@web/dev-server-esbuild',
+                        '@web/test-runner',
+                        '@web/test-runner-commands',
+                        '@web/test-runner-playwright',
+                        '@web/test-runner-visual-regression',
+                        'istanbul-smart-text-reporter',
+                        'typescript',
+                    ],
+                    peerDependencies: [
+                        'element-vir',
+                    ],
+                },
                 dirRelativePath: 'packages/element-vir',
                 npmName: '@augment-vir/element-vir',
             },
@@ -139,6 +244,33 @@ describe(createPackageTree.name, () => {
                     'ts-node',
                     'type-fest',
                 ],
+                depsByType: {
+                    dependencies: [
+                        '@augment-vir/common',
+                        'ansi-colors',
+                        'axios',
+                        'fs-extra',
+                        'ts-node',
+                        'type-fest',
+                    ],
+                    devDependencies: [
+                        '@augment-vir/chai',
+                        '@electrovir/nyc',
+                        '@istanbuljs/nyc-config-typescript',
+                        '@types/chai',
+                        '@types/chai-as-promised',
+                        '@types/fs-extra',
+                        '@types/mocha',
+                        '@types/node',
+                        'chai',
+                        'chai-as-promised',
+                        'istanbul-smart-text-reporter',
+                        'mocha',
+                        'mocha-spec-reporter-with-file-names',
+                        'ts-node',
+                        'typescript',
+                    ],
+                },
                 dirRelativePath: 'packages/node-js',
                 npmName: '@augment-vir/node-js',
             },
@@ -149,6 +281,16 @@ describe(createPackageTree.name, () => {
                     '@augment-vir/common',
                     '@augment-vir/node-js',
                 ],
+                depsByType: {
+                    dependencies: [
+                        '@augment-vir/common',
+                        '@augment-vir/node-js',
+                    ],
+                    devDependencies: [
+                        'istanbul-smart-text-reporter',
+                        'typescript',
+                    ],
+                },
                 dirRelativePath: 'packages/prisma-node-js',
                 npmName: '@augment-vir/prisma-node-js',
             },
@@ -169,6 +311,26 @@ describe(createPackageTree.name, () => {
                     '@augment-vir/common',
                     '@augment-vir/node-js',
                 ],
+                depsByType: {
+                    dependencies: [
+                        '@augment-vir/common',
+                        '@augment-vir/node-js',
+                    ],
+                    devDependencies: [
+                        '@electrovir/nyc',
+                        '@istanbuljs/nyc-config-typescript',
+                        '@types/chai',
+                        '@types/mocha',
+                        '@types/node',
+                        'chai',
+                        'istanbul-smart-text-reporter',
+                        'mocha',
+                        'mocha-spec-reporter-with-file-names',
+                        'ts-node',
+                        'type-fest',
+                        'typescript',
+                    ],
+                },
                 dirRelativePath: 'packages/scripts',
                 npmName: '@augment-vir/scripts',
             },
@@ -189,6 +351,26 @@ describe(createPackageTree.name, () => {
                     'mock-vir',
                     'type-fest',
                 ],
+                depsByType: {
+                    dependencies: [
+                        '@augment-vir/common',
+                        '@types/chai',
+                        'expect-type',
+                        'mock-vir',
+                        'type-fest',
+                    ],
+                    devDependencies: [
+                        '@electrovir/nyc',
+                        '@istanbuljs/nyc-config-typescript',
+                        '@types/mocha',
+                        'chai',
+                        'istanbul-smart-text-reporter',
+                        'mocha',
+                        'mocha-spec-reporter-with-file-names',
+                        'ts-node',
+                        'typescript',
+                    ],
+                },
                 dirRelativePath: 'packages/testing',
                 npmName: '@augment-vir/testing',
             },
@@ -275,6 +457,91 @@ describe(createPackageTree.name, () => {
             '@augment-vir/element-vir': {},
             '@augment-vir/prisma-node-js': {},
             '@augment-vir/scripts': {},
+        },
+        allDependenciesByPackage: {
+            '@augment-vir/browser': {
+                dependencies: [
+                    '@augment-vir/common',
+                ],
+                devDependencies: [
+                    '@augment-vir/browser-testing',
+                    '@augment-vir/testing',
+                ],
+            },
+            '@augment-vir/browser-testing': {
+                dependencies: [
+                    '@augment-vir/common',
+                    '@augment-vir/testing',
+                ],
+            },
+            '@augment-vir/chai': {
+                dependencies: [
+                    '@augment-vir/common',
+                    '@augment-vir/testing',
+                ],
+            },
+            '@augment-vir/common': {},
+            '@augment-vir/common-tests': {
+                devDependencies: [
+                    '@augment-vir/chai',
+                    '@augment-vir/common',
+                    '@augment-vir/node-js',
+                    '@augment-vir/testing',
+                ],
+            },
+            '@augment-vir/docker': {
+                dependencies: [
+                    '@augment-vir/common',
+                    '@augment-vir/node-js',
+                ],
+                devDependencies: [
+                    '@augment-vir/chai',
+                    '@augment-vir/testing',
+                ],
+            },
+            '@augment-vir/element-vir': {
+                dependencies: [
+                    '@augment-vir/common',
+                ],
+                devDependencies: [
+                    '@augment-vir/browser-testing',
+                    '@augment-vir/testing',
+                ],
+            },
+            '@augment-vir/node-js': {
+                dependencies: [
+                    '@augment-vir/common',
+                ],
+                devDependencies: [
+                    '@augment-vir/chai',
+                    '@augment-vir/testing',
+                ],
+            },
+            '@augment-vir/prisma-node-js': {
+                dependencies: [
+                    '@augment-vir/common',
+                    '@augment-vir/node-js',
+                ],
+                devDependencies: [
+                    '@augment-vir/chai',
+                    '@augment-vir/testing',
+                ],
+            },
+            '@augment-vir/scripts': {
+                dependencies: [
+                    '@augment-vir/common',
+                    '@augment-vir/node-js',
+                ],
+                devDependencies: [
+                    '@augment-vir/chai',
+                    '@augment-vir/testing',
+                ],
+            },
+            '@augment-vir/testing': {
+                dependencies: [
+                    '@augment-vir/common',
+                ],
+            },
         },
     };
 

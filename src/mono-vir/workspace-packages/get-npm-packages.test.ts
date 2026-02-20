@@ -1,9 +1,16 @@
+import {omitObjectKeys} from '@augment-vir/common';
 import {describe, itCases} from '@augment-vir/test';
 import {testRepos} from '../../file-paths.mock.js';
 import {getNpmPackages} from './get-npm-packages.js';
 
+async function testGetNpmPackages(cwd: string) {
+    const results = await getNpmPackages(cwd);
+    /** Omit depsByType for simpler test expectations. */
+    return results.map((pkg) => omitObjectKeys(pkg, ['depsByType']));
+}
+
 describe(getNpmPackages.name, () => {
-    itCases(getNpmPackages, [
+    itCases(testGetNpmPackages, [
         {
             it: 'gets all npm dependencies',
             input: testRepos['augment-vir'],
