@@ -21,7 +21,12 @@ export async function createPackageTree(cwd: string, exclude: ReadonlyArray<stri
     const packagesByName: Readonly<Record<string, NpmPackage>> = Object.fromEntries(
         filterMap(
             npmPackagesArray,
-            (npmPackage): [string, NpmPackage] => {
+            (
+                npmPackage,
+            ): [
+                string,
+                NpmPackage,
+            ] => {
                 return [
                     npmPackage.npmName,
                     npmPackage,
@@ -84,9 +89,7 @@ export function computeAllTransitiveDependencies(
         const cached = cache.get(packageName);
         if (cached) {
             return cached;
-        }
-
-        if (visited.has(packageName)) {
+        } else if (visited.has(packageName)) {
             /** Circular dependency detected. */
             return new Set<string>();
         }
@@ -136,10 +139,17 @@ export function computeAllTransitiveDependencies(
         /** Sort each array for consistent output and filter out empty arrays. */
         return Object.fromEntries(
             dependencyKeysForAllDependencies
-                .map((depType): [PackageJsonDependencyKey, string[]] => [
-                    depType,
-                    result[depType].toSorted(),
-                ])
+                .map(
+                    (
+                        depType,
+                    ): [
+                        PackageJsonDependencyKey,
+                        string[],
+                    ] => [
+                        depType,
+                        result[depType].toSorted(),
+                    ],
+                )
                 .filter(
                     ([
                         ,
@@ -157,6 +167,7 @@ const depTypeStrength: Readonly<Record<PackageJsonDependencyKey, number>> = {
     [PackageJsonDependencyKey.Overrides]: -1,
 };
 
+// eslint-disable-next-line @virmator/prefer-params-object
 function weakerDepType(
     a: PackageJsonDependencyKey,
     b: PackageJsonDependencyKey,
@@ -278,7 +289,10 @@ export async function writePackageDepsToFile({
     const {packagesGraph} = await createPackageTree(cwd, exclude);
 
     const outputFilePath = filePath
-        ? addSuffix({value: filePath, suffix: '.svg'})
+        ? addSuffix({
+              value: filePath,
+              suffix: '.svg',
+          })
         : join(cwd, 'packages-graph.svg');
 
     const svg = await writeGraphToSvg(packagesGraph, outputFilePath);

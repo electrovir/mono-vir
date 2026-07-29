@@ -9,8 +9,7 @@ export function findLongestCommonPrefix(inputStrings: ReadonlyArray<string>): st
     inputStrings.slice(1).every((inputString) => {
         if (!currentLongestPrefix.length) {
             return false;
-        }
-        if (inputString.startsWith(currentLongestPrefix)) {
+        } else if (inputString.startsWith(currentLongestPrefix)) {
             return true;
         }
 

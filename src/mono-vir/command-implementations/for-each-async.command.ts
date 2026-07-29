@@ -18,7 +18,11 @@ export async function runForEachAsyncCommand({
     exclude,
 }: Readonly<CommandInputs>): Promise<CommandOutput> {
     if (maxConcurrency === 1) {
-        return await runForEachCommand({cwd, commandInputs, exclude});
+        return await runForEachCommand({
+            cwd,
+            commandInputs,
+            exclude,
+        });
     }
     const relativePackagePathsInOrder = await getRelativePosixPackagePathsInDependencyOrder(
         cwd,
@@ -28,7 +32,7 @@ export async function runForEachAsyncCommand({
     const shellCommand = commandInputs.join(' ');
 
     if (!shellCommand) {
-        throw new MonoCliInputError(`No inputs were given to the for-each-async command.`);
+        throw new MonoCliInputError('No inputs were given to the for-each-async command.');
     }
 
     const commonPath = findLongestCommonPath(relativePackagePathsInOrder);

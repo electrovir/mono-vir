@@ -100,7 +100,10 @@ export async function writeGraphToSvg(
     const dot = toDot(graph);
     const viz = await instance();
 
-    const svg = viz.renderString(dot, {format: 'svg', engine: 'dot'});
+    const svg = viz.renderString(dot, {
+        format: 'svg',
+        engine: 'dot',
+    });
     await writeFileAndDir(filePath, svg);
 
     return svg;

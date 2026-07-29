@@ -58,7 +58,10 @@ export function flattenTree(tree: ReadonlyArray<TreeNode>): string[][] {
      */
     const allDescendants: Record<string, Set<string>> = {};
 
-    function addDescendant(parentValue: string, descendantValue: string) {
+    function addDescendant({
+        parentValue,
+        descendantValue,
+    }: Readonly<{parentValue: string; descendantValue: string}>) {
         if (!allDescendants[parentValue]) {
             allDescendants[parentValue] = new Set();
         }
@@ -78,7 +81,12 @@ export function flattenTree(tree: ReadonlyArray<TreeNode>): string[][] {
             ].join(' -> ');
             throw new Error(`Circular dependency detected: ${circularDepPath}`);
         }
-        parents.forEach((parent) => addDescendant(parent, node.value));
+        parents.forEach((parent) =>
+            addDescendant({
+                parentValue: parent,
+                descendantValue: node.value,
+            }),
+        );
 
         levelsByValue[node.value] = Math.max(levelsByValue[node.value] ?? 0, currentLevel);
         node.dependents.forEach((child) =>

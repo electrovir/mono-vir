@@ -566,7 +566,9 @@ describe(createPackageTree.name, () => {
 
 describe(writePackageDepsToFile.name, () => {
     it('writes a file', async () => {
-        await rm(testOutputGraphFilePath, {force: true});
+        await rm(testOutputGraphFilePath, {
+            force: true,
+        });
         assert.isFalse(existsSync(testOutputGraphFilePath));
 
         const {filePath, svg} = await writePackageDepsToFile({
